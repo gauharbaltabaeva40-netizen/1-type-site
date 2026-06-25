@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аналитика орталығы | ASYL HUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #eef2f7; color: #1a2332; }
+        
+        /* Login беті */
+        #loginScreen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .login-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            width: 400px;
+            max-width: 90%;
+        }
+        .login-card h1 { font-size: 32px; margin-bottom: 8px; }
+        .login-card h1 span { color: #3b82f6; }
+        .login-card p { color: #64748b; margin-bottom: 25px; }
+        .login-card input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .login-card button {
+            width: 100%;
+            padding: 16px;
+            background: #0f172a;
+            color: #fff;
+            border: none;
+            border-radius: 18px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .login-card button:hover { background: #3b82f6; }
+
+        /* Дашборд */
+        #dashboard { display: none; padding: 20px; max-width: 1400px; margin: 0 auto; }
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .dash-header h2 { font-size: 32px; }
+        .dash-header h2 span { color: #3b82f6; }
+        .logout-btn {
+            background: #ef4444;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #e9edf2;
+        }
+        .stat-card .label { font-size: 14px; color: #64748b; font-weight: 600; }
+        .stat-card .value { font-size: 36px; font-weight: 800; color: #0f172a; }
+
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+        .tools input {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 18px;
+            font-size: 16px;
+        }
+        .tools button {
+            background: #0f172a;
+            color: #fff;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 18px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .tools button:hover { background: #3b82f6; }
+
+        .table-wrap {
+            background: #fff;
+            border-radius: 30px;
+            padding: 20px;
+            overflow-x: auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid #e9edf2;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; padding: 15px 10px; background: #f8fafc; cursor: pointer; border-bottom: 2px solid #e2e8f0; }
+        td { padding: 15px 10px; border-bottom: 1px solid #f1f5f9; }
+        .status { 
+            padding: 4px 14px; border-radius: 50px; font-size: 13px; font-weight: 700; 
+            background: #dcfce7; color: #166534;
+        }
+        .status.pending { background: #fef9c3; color: #854d0e; }
+        .status.cancelled { background: #fee2e2; color: #991b1b; }
+
+        .chart-bars {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 150px;
+            margin: 30px 0;
+            gap: 10px;
+        }
+        .bar-item { display: flex; flex-direction: column; align-items: center; flex:1; }
+        .bar { width: 100%; background: #3b82f6; border-radius: 10px 10px 0 0; transition: 0.5s; min-height: 20px; }
+        .bar-label { margin-top: 8px; font-size: 14px; font-weight: 600; }
+
+        @media (max-width: 600px) {
+            .dash-header { flex-direction: column; align-items: start; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN ЭКРАНЫ -->
+<div id="loginScreen">
+    <div class="login-card">
+        <h1>ASYL <span>HUB</span></h1>
+        <p>Басқару панеліне кіру</p>
+        <input type="text" id="loginUser" value="admin" placeholder="Логин">
+        <input type="password" id="loginPass" value="123456" placeholder="Құпия сөз">
+        <button onclick="handleLogin()">🚀 Кіру</button>
+        <p style="margin-top:15px; font-size:13px; color:#94a3b8;">Демо: admin / 123456</p>
+    </div>
+</div>
+
+<!-- ДАШБОРД -->
+<div id="dashboard">
+    <div class="dash-header">
+        <h2>📊 ASYL <span>ANALYTICS</span></h2>
+        <div>
+            <span style="background:#dbeafe; padding:8px 18px; border-radius:50px; font-weight:600; margin-right:10px;">🔍 Басқару пульті</span>
+            <button class="logout-btn" onclick="handleLogout()">Шығу</button>
+        </div>
+    </div>
+
+    <!-- Статистика -->
+    <div class="stats-grid">
+        <div class="stat-card"><div class="label">Барлық тапсырыстар</div><div class="value" id="totalOrders">47</div></div>
+        <div class="stat-card"><div class="label">Ағымдағы ай</div><div class="value" id="monthOrders">18</div></div>
+        <div class="stat-card"><div class="label">Жаңа клиенттер</div><div class="value" id="newClients">12</div></div>
+        <div class="stat-card"><div class="label">Пікірлер</div><div class="value" id="feedbacks">9</div></div>
+    </div>
+
+    <!-- Диаграмма (аналитика) -->
+    <div style="background:#fff; border-radius:30px; padding:20px; border:1px solid #e9edf2; margin-bottom:30px;">
+        <h4 style="margin-bottom:5px;">📈 Апталық тапсырыс тренді</h4>
+        <div class="chart-bars" id="chartBars">
+            <div class="bar-item"><div class="bar" style="height:60px; background:#3b82f6;"></div><div class="bar-label">Дүй</div></div>
+            <div class="bar-item"><div class="bar" style="height:90px; background:#3b82f6;"></div><div class="bar-label">Сей</div></div>
+            <div class="bar-item"><div class="bar" style="height:120px; background:#2563eb;"></div><div class="bar-label">Сәр</div></div>
+            <div class="bar-item"><div class="bar" style="height:70px; background:#3b82f6;"></div><div class="bar-label">Бей</div></div>
+            <div class="bar-item"><div class="bar" style="height:150px; background:#1d4ed8;"></div><div class="bar-label">Жұм</div></div>
+            <div class="bar-item"><div class="bar" style="height:50px; background:#93c5fd;"></div><div class="bar-label">Сен</div></div>
+            <div class="bar-item"><div class="bar" style="height:40px; background:#93c5fd;"></div><div class="bar-label">Жек</div></div>
+        </div>
+    </div>
+
+    <!-- Іздеу және Экспорт -->
+    <div class="tools">
+        <input type="text" id="searchInput" oninput="filterTable()" placeholder="🔍 Клиент аты немесе телефон бойынша іздеу...">
+        <button onclick="exportCSV()">📥 Excel (CSV) жүктеу</button>
+        <button onclick="sortTable('client')" style="background:#334155;">🔄 Сұрыптау (А-Я)</button>
+    </div>
+
+    <!-- Кесте -->
+    <div class="table-wrap">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th onclick="sortTable('client')">Клиент ↕</th>
+                    <th onclick="sortTable('phone')">Телефон ↕</th>
+                    <th onclick="sortTable('service')">Қызмет ↕</th>
+                    <th onclick="sortTable('date')">Күні ↕</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr><td>1</td><td>Айгүл Әлімова</td><td>+7 701 111 22 33</td><td>Кеңес беру</td><td>2026-06-25</td><td><span class="status">Аяқталды</span></td></tr>
+                <tr><td>2</td><td>Бауыржан Смағұл</td><td>+7 702 222 33 44</td><td>Диагностика</td><td>2026-06-26</td><td><span class="status pending">Күтуде</span></td></tr>
+                <tr><td>3</td><td>Гүлмира Төлеген</td><td>+7 703 333 44 55</td><td>Толық тексеру</td><td>2026-06-24</td><td><span class="status">Аяқталды</span></td></tr>
+                <tr><td>4</td><td>Ерлан Досмұхамбет</td><td>+7 704 444 55 66</td><td>Кеңес беру</td><td>2026-06-27</td><td><span class="status cancelled">Бас тартылды</span></td></tr>
+                <tr><td>5</td><td>Арайлым Сағындық</td><td>+7 705 555 66 77</td><td>Басқа</td><td>2026-06-23</td><td><span class="status">Аяқталды</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // Кіру функциясы
+    function handleLogin() {
+        const user = document.getElementById('loginUser').value;
+        const pass = document.getElementById('loginPass').value;
+        if (user === 'admin' && pass === '123456') {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+        } else {
+            alert('Қате логин немесе құпия сөз! (admin / 123456)');
+        }
+    }
+    function handleLogout() {
+        document.getElementById('loginScreen').style.display = 'flex';
+        document.getElementById('dashboard').style.display = 'none';
+    }
+
+    // Іздеу (Фильтр)
+    function filterTable() {
+        const input = document.getElementById('searchInput').value.toUpperCase();
+        const rows = document.querySelectorAll('#tableBody tr');
+        rows.forEach(row => {
+            const text = row.innerText.toUpperCase();
+            row.style.display = text.includes(input) ? '' : 'none';
+        });
+    }
+
+    // Сұрыптау (Қарапайым)
+    let sortAsc = true;
+    function sortTable(column) {
+        const tbody = document.getElementById('tableBody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        const index = { client: 1, phone: 2, service: 3, date: 4 }[column] || 1;
+        
+        rows.sort((a, b) => {
+            const valA = a.cells[index].innerText.toLowerCase();
+            const valB = b.cells[index].innerText.toLowerCase();
+            if (valA < valB) return sortAsc ? -1 : 1;
+            if (valA > valB) return sortAsc ? 1 : -1;
+            return 0;
+        });
+        sortAsc = !sortAsc;
+        rows.forEach(row => tbody.appendChild(row));
+    }
+
+    // Экспорт (CSV)
+    function exportCSV() {
+        const rows = document.querySelectorAll('#tableBody tr');
+        let csv = "№,Клиент,Телефон,Қызмет,Күні,Статус\n";
+        rows.forEach(row => {
+            if (row.style.display !== 'none') {
+                const cols = row.querySelectorAll('td');
+                csv += cols[0].innerText + "," + cols[1].innerText + "," + cols[2].innerText + "," + 
+                       cols[3].innerText + "," + cols[4].innerText + "," + 
+                       cols[5].innerText.replace(/\n/g, '').trim() + "\n";
+            }
+        });
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'orders_export.csv';
+        link.click();
+    }
+
+    // Enter кілтімен кіру
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') {
+            handleLogin();
+        }
+    });
+</script>
+</body>
+</html>
