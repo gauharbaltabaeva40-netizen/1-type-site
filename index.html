@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Адал Auto | Визитка</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #090b12;
+            color: #f1f5f9;
+            min-height: 100vh;
+        }
+        .glow1 { position:fixed; top:-30%; left:-20%; width:600px; height:600px; background:radial-gradient(circle,rgba(99,102,241,0.2),transparent 70%); border-radius:50%; pointer-events:none; z-index:0; }
+        .glow2 { position:fixed; bottom:-30%; right:-20%; width:600px; height:600px; background:radial-gradient(circle,rgba(236,72,153,0.15),transparent 70%); border-radius:50%; pointer-events:none; z-index:0; }
+        .container { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:24px 20px; }
+
+        /* Навигация */
+        .nav {
+            display:flex; justify-content:space-between; align-items:center;
+            background:rgba(255,255,255,0.03); backdrop-filter:blur(24px);
+            border:1px solid rgba(255,255,255,0.06); border-radius:100px;
+            padding:12px 28px; flex-wrap:wrap; gap:12px;
+        }
+        .logo { font-size:26px; font-weight:800; }
+        .logo span { background:linear-gradient(135deg,#818cf8,#c084fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .nav-links { display:flex; gap:20px; flex-wrap:wrap; }
+        .nav-links a { color:rgba(255,255,255,0.5); text-decoration:none; font-weight:500; font-size:14px; transition:0.3s; }
+        .nav-links a:hover { color:#fff; }
+        .nav-phone { color:#818cf8; font-weight:700; }
+
+        /* Hero */
+        .hero { text-align:center; padding:50px 0 30px; }
+        .hero h1 { font-size:clamp(40px,7vw,72px); font-weight:800; background:linear-gradient(to right,#fff,#a5b4fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .hero p { color:rgba(255,255,255,0.4); font-size:18px; margin-top:10px; }
+        .stats { display:flex; justify-content:center; gap:60px; margin:30px 0 40px; flex-wrap:wrap; }
+        .stats div { text-align:center; }
+        .stats .num { font-size:36px; font-weight:800; color:#818cf8; }
+        .stats .lbl { color:rgba(255,255,255,0.4); font-size:14px; }
+
+        /* Секциялар */
+        .section { margin:60px 0 40px; }
+        .section-title { font-size:28px; font-weight:700; text-align:center; margin-bottom:10px; }
+        .section-sub { text-align:center; color:rgba(255,255,255,0.3); margin-bottom:30px; }
+
+        .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; }
+        .card {
+            background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04);
+            padding:28px 20px; border-radius:28px; text-align:center;
+            transition:0.4s;
+        }
+        .card:hover { background:rgba(255,255,255,0.04); transform:translateY(-6px); }
+        .card .icon { font-size:32px; margin-bottom:12px; }
+        .card h4 { font-weight:600; margin-bottom:6px; }
+        .card p { font-size:14px; color:rgba(255,255,255,0.4); }
+
+        .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; }
+        .step { text-align:center; padding:20px; background:rgba(255,255,255,0.01); border-radius:24px; border:1px solid rgba(255,255,255,0.03); }
+        .step .n { font-size:40px; font-weight:800; color:rgba(129,140,248,0.2); line-height:1; }
+        .step h4 { margin:10px 0 4px; font-size:16px; }
+        .step p { font-size:13px; color:rgba(255,255,255,0.3); }
+
+        .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; }
+        .testimonial { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04); padding:24px; border-radius:28px; }
+        .testimonial .name { font-weight:700; }
+        .testimonial .car { font-size:13px; color:rgba(255,255,255,0.3); }
+        .testimonial .stars { color:#facc15; font-size:16px; margin:6px 0; }
+        .testimonial p { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.5; }
+
+        .map { border-radius:28px; overflow:hidden; height:200px; border:1px solid rgba(255,255,255,0.04); margin:20px 0; }
+        .map iframe { width:100%; height:100%; border:0; filter:grayscale(0.6) invert(0.9); }
+
+        .footer { text-align:center; padding:30px 0 10px; color:rgba(255,255,255,0.15); font-size:13px; border-top:1px solid rgba(255,255,255,0.03); margin-top:30px; }
+
+        @media (max-width:768px) { .nav { flex-direction:column; border-radius:30px; } .stats { gap:30px; } }
+    </style>
+</head>
+<body>
+<div class="glow1"></div><div class="glow2"></div>
+<div class="container">
+
+    <div class="nav">
+        <div class="logo">Адал <span>Auto</span></div>
+        <div class="nav-links">
+            <a href="#">Қызметтер</a><a href="#">Неліктен біз</a><a href="#">Жұмыс процесі</a><a href="#">Пікірлер</a><a href="#">Байланыс</a>
+        </div>
+        <div class="nav-phone">+7 700 123 45 67</div>
+    </div>
+
+    <div class="hero">
+        <h1>Адал Auto</h1>
+        <p>Сенімді серіктес — сапалы қызмет</p>
+        <div class="stats">
+            <div><div class="num">3000+</div><div class="lbl">Жөнделген көлік</div></div>
+            <div><div class="num">98%</div><div class="lbl">Қанағаттанған клиент</div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Неліктен біз</div>
+        <div class="section-sub">Бізді таңдаудың 6 себебі</div>
+        <div class="grid-3">
+            <div class="card"><div class="icon">🏆</div><h4>10+ жыл тәжірибе</h4><p>Ондаған жыл бойы жинақталған білім</p></div>
+            <div class="card"><div class="icon">📜</div><h4>Кепілдік беріледі</h4><p>Барлық жұмыстарға кепілдік</p></div>
+            <div class="card"><div class="icon">🔧</div><h4>Түпнұсқа бөлшектер</h4><p>Тек сапалы қосалқы бөлшектер</p></div>
+            <div class="card"><div class="icon">⚙️</div><h4>Заманауи құралдар</h4><p>Ең жаңа диагностика жабдықтары</p></div>
+            <div class="card"><div class="icon">⚡</div><h4>Жылдам қызмет</h4><p>Уақытты бағалаймыз, тез орындаймыз</p></div>
+            <div class="card"><div class="icon">💰</div><h4>Ашық баға саясаты</h4><p>Жасырын төлемдер жоқ</p></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Жұмыс процесі</div>
+        <div class="section-sub">Қызмет көрсету кезеңдері</div>
+        <div class="steps">
+            <div class="step"><div class="n">01</div><h4>Өтінім қалдыру</h4><p>Сайт/телефон арқылы</p></div>
+            <div class="step"><div class="n">02</div><h4>Диагностика</h4><p>Көлікті толық тексеру</p></div>
+            <div class="step"><div class="n">03</div><h4>Баға келісу</h4><p>Жұмыс көлемі мен баға</p></div>
+            <div class="step"><div class="n">04</div><h4>Жөндеу</h4><p>Кәсіби жөндеу</p></div>
+            <div class="step"><div class="n">05</div><h4>Көлікті тапсыру</h4><p>Кепілдікпен тапсыру</p></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Клиент пікірлері</div>
+        <div class="section-sub">Клиенттеріміз не дейді</div>
+        <div class="testimonials">
+            <div class="testimonial"><div class="name">Арман Тілеуов</div><div class="car">Toyota Camry 70</div><div class="stars">★★★★★</div><p>Өте жақсы сервис! Қозғалтқышты тез және сапалы жөндеп берді. Ұсынамын!</p></div>
+            <div class="testimonial"><div class="name">Дәурен Сейтқазин</div><div class="car">BMW X5</div><div class="stars">★★★★★</div><p>Ходоваяны толық жөндетіп шықтым. Баға қолжетімді, жұмыс сапалы.</p></div>
+            <div class="testimonial"><div class="name">Айгүл Қасымова</div><div class="car">Hyundai Tucson</div><div class="stars">★★★★★</div><p>Мамандар өз ісін жақсы біледі. Енді тек осында жүргіземін.</p></div>
+            <div class="testimonial"><div class="name">Болат Жұмабаев</div><div class="car">Mercedes E-Class</div><div class="stars">★★★★★</div><p>Өте сапалы қызмет. Уақытында тапсырды. Рахмет!</p></div>
+        </div>
+    </div>
+
+    <div class="map"><iframe src="https://yandex.kz/map-widget/v1/?ll=71.430073%2C51.128220&z=16&pt=71.430073,51.128220,pm2rdl"></iframe></div>
+    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; color:rgba(255,255,255,0.2); font-size:14px;">
+        <span>📍 Астана, Достық 12/1</span><span>📞 +7 700 123 45 67</span><span>⏰ 09:00 – 21:00</span>
+    </div>
+    <div class="footer">© 2026 Адал Auto · Барлық құқықтар қорғалған</div>
+</div>
+</body>
+</html>
