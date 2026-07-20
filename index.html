@@ -2,143 +2,641 @@
 <html lang="kk">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Адал Auto | Визитка</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #090b12;
             color: #f1f5f9;
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        .glow1 { position:fixed; top:-30%; left:-20%; width:600px; height:600px; background:radial-gradient(circle,rgba(99,102,241,0.2),transparent 70%); border-radius:50%; pointer-events:none; z-index:0; }
-        .glow2 { position:fixed; bottom:-30%; right:-20%; width:600px; height:600px; background:radial-gradient(circle,rgba(236,72,153,0.15),transparent 70%); border-radius:50%; pointer-events:none; z-index:0; }
-        .container { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:24px 20px; }
 
-        /* Навигация */
+        /* ===== Фоновые свечения ===== */
+        .glow1 {
+            position: fixed;
+            top: -30%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 8s ease-in-out infinite alternate;
+        }
+        .glow2 {
+            position: fixed;
+            bottom: -30%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.5; transform: scale(1) translate(0, 0); }
+            100% { opacity: 1; transform: scale(1.3) translate(20px, -20px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        /* ===== Фоновое видео (Hero) ===== */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.35) saturate(1.2);
+        }
+
+        .hero-wrapper {
+            position: relative;
+            border-radius: 40px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            background: #0b0e17;
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 70px 20px 50px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .hero h1 {
+            font-size: clamp(44px, 8vw, 80px);
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeSlideUp 1s ease-out;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 20px;
+            margin-top: 8px;
+            animation: fadeSlideUp 1.2s ease-out;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 30px 0 0;
+            flex-wrap: wrap;
+            animation: fadeSlideUp 1.4s ease-out;
+        }
+
+        .stats div {
+            text-align: center;
+        }
+        .stats .num {
+            font-size: 40px;
+            font-weight: 800;
+            color: #818cf8;
+            letter-spacing: 1px;
+        }
+        .stats .lbl {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== Навигация ===== */
         .nav {
-            display:flex; justify-content:space-between; align-items:center;
-            background:rgba(255,255,255,0.03); backdrop-filter:blur(24px);
-            border:1px solid rgba(255,255,255,0.06); border-radius:100px;
-            padding:12px 28px; flex-wrap:wrap; gap:12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 10px 28px;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            animation: fadeSlideUp 0.6s ease-out;
         }
-        .logo { font-size:26px; font-weight:800; }
-        .logo span { background:linear-gradient(135deg,#818cf8,#c084fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .nav-links { display:flex; gap:20px; flex-wrap:wrap; }
-        .nav-links a { color:rgba(255,255,255,0.5); text-decoration:none; font-weight:500; font-size:14px; transition:0.3s; }
-        .nav-links a:hover { color:#fff; }
-        .nav-phone { color:#818cf8; font-weight:700; }
 
-        /* Hero */
-        .hero { text-align:center; padding:50px 0 30px; }
-        .hero h1 { font-size:clamp(40px,7vw,72px); font-weight:800; background:linear-gradient(to right,#fff,#a5b4fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .hero p { color:rgba(255,255,255,0.4); font-size:18px; margin-top:10px; }
-        .stats { display:flex; justify-content:center; gap:60px; margin:30px 0 40px; flex-wrap:wrap; }
-        .stats div { text-align:center; }
-        .stats .num { font-size:36px; font-weight:800; color:#818cf8; }
-        .stats .lbl { color:rgba(255,255,255,0.4); font-size:14px; }
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        /* Секциялар */
-        .section { margin:60px 0 40px; }
-        .section-title { font-size:28px; font-weight:700; text-align:center; margin-bottom:10px; }
-        .section-sub { text-align:center; color:rgba(255,255,255,0.3); margin-bottom:30px; }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0%;
+            height: 2px;
+            background: #818cf8;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #fff;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-        .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; }
+        .nav-phone {
+            color: #818cf8;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* ===== Секции ===== */
+        .section {
+            margin: 60px 0 40px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 6px;
+            animation: fadeSlideUp 0.8s ease-out;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        /* ===== Карточки ===== */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
         .card {
-            background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04);
-            padding:28px 20px; border-radius:28px; text-align:center;
-            transition:0.4s;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 28px 16px;
+            border-radius: 28px;
+            text-align: center;
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardReveal 0.6s ease-out forwards;
         }
-        .card:hover { background:rgba(255,255,255,0.04); transform:translateY(-6px); }
-        .card .icon { font-size:32px; margin-bottom:12px; }
-        .card h4 { font-weight:600; margin-bottom:6px; }
-        .card p { font-size:14px; color:rgba(255,255,255,0.4); }
 
-        .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; }
-        .step { text-align:center; padding:20px; background:rgba(255,255,255,0.01); border-radius:24px; border:1px solid rgba(255,255,255,0.03); }
-        .step .n { font-size:40px; font-weight:800; color:rgba(129,140,248,0.2); line-height:1; }
-        .step h4 { margin:10px 0 4px; font-size:16px; }
-        .step p { font-size:13px; color:rgba(255,255,255,0.3); }
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
 
-        .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; }
-        .testimonial { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04); padding:24px; border-radius:28px; }
-        .testimonial .name { font-weight:700; }
-        .testimonial .car { font-size:13px; color:rgba(255,255,255,0.3); }
-        .testimonial .stars { color:#facc15; font-size:16px; margin:6px 0; }
-        .testimonial p { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.5; }
+        .card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(129, 140, 248, 0.3);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+        }
 
-        .map { border-radius:28px; overflow:hidden; height:200px; border:1px solid rgba(255,255,255,0.04); margin:20px 0; }
-        .map iframe { width:100%; height:100%; border:0; filter:grayscale(0.6) invert(0.9); }
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+            display: block;
+        }
 
-        .footer { text-align:center; padding:30px 0 10px; color:rgba(255,255,255,0.15); font-size:13px; border-top:1px solid rgba(255,255,255,0.03); margin-top:30px; }
+        .card h4 {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 17px;
+        }
 
-        @media (max-width:768px) { .nav { flex-direction:column; border-radius:30px; } .stats { gap:30px; } }
+        .card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.5;
+        }
+
+        /* ===== Этапы ===== */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 24px 12px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: 0.3s;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: fadeSlideUp 0.5s ease-out forwards;
+        }
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(4) { animation-delay: 0.4s; }
+        .step:nth-child(5) { animation-delay: 0.5s; }
+
+        .step:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-4px);
+            border-color: rgba(129, 140, 248, 0.2);
+        }
+
+        .step .n {
+            font-size: 44px;
+            font-weight: 800;
+            color: rgba(129, 140, 248, 0.15);
+            line-height: 1;
+        }
+
+        .step h4 {
+            margin: 10px 0 4px;
+            font-size: 16px;
+        }
+
+        .step p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== Отзывы с фото ===== */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-radius: 28px;
+            transition: 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.6s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial:nth-child(3) { animation-delay: 0.3s; }
+        .testimonial:nth-child(4) { animation-delay: 0.4s; }
+
+        .testimonial:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-6px);
+            border-color: rgba(129, 140, 248, 0.15);
+        }
+
+        .testimonial .top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(129, 140, 248, 0.3);
+        }
+
+        .testimonial .info .name {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .testimonial .info .car {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .testimonial .stars {
+            color: #facc15;
+            font-size: 16px;
+            margin: 4px 0 6px;
+        }
+
+        .testimonial p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        /* ===== Карта ===== */
+        .map-wrapper {
+            border-radius: 28px;
+            overflow: hidden;
+            height: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 20px 0;
+            transition: 0.4s;
+        }
+
+        .map-wrapper:hover {
+            border-color: rgba(129, 140, 248, 0.2);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.5) invert(0.9);
+        }
+
+        .contacts-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 14px;
+            padding: 10px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0 10px;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            margin-top: 30px;
+        }
+
+        /* ===== Анимации ===== */
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== Адаптив ===== */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                border-radius: 30px;
+                padding: 16px 20px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 14px;
+            }
+            .stats {
+                gap: 30px;
+            }
+            .hero {
+                min-height: 380px;
+                padding: 40px 16px 30px;
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+            .section-title {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 12px 10px;
+            }
+            .card {
+                padding: 20px 12px;
+            }
+            .testimonial .top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="glow1"></div><div class="glow2"></div>
-<div class="container">
 
-    <div class="nav">
-        <div class="logo">Адал <span>Auto</span></div>
-        <div class="nav-links">
-            <a href="#">Қызметтер</a><a href="#">Неліктен біз</a><a href="#">Жұмыс процесі</a><a href="#">Пікірлер</a><a href="#">Байланыс</a>
+    <!-- Фоновые свечения -->
+    <div class="glow1"></div>
+    <div class="glow2"></div>
+
+    <div class="container">
+
+        <!-- Навигация -->
+        <nav class="nav">
+            <div class="logo">Адал <span>Auto</span></div>
+            <div class="nav-links">
+                <a href="#">Қызметтер</a>
+                <a href="#">Неліктен біз</a>
+                <a href="#">Жұмыс процесі</a>
+                <a href="#">Пікірлер</a>
+                <a href="#">Байланыс</a>
+            </div>
+            <div class="nav-phone">+7 700 123 45 67</div>
+        </nav>
+
+        <!-- Hero с фоновым видео -->
+        <div class="hero-wrapper">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="https://cdn.coverr.co/videos/coverr-mechanic-working-on-a-car-engine-3274/1080p.mp4" type="video/mp4" />
+                <!-- Запасной фон, если видео не загрузится -->
+            </video>
+            <div class="hero">
+                <h1>Адал Auto</h1>
+                <p>Сенімді серіктес — сапалы қызмет</p>
+                <div class="stats">
+                    <div>
+                        <div class="num" data-count="3000">0</div>
+                        <div class="lbl">Жөнделген көлік</div>
+                    </div>
+                    <div>
+                        <div class="num" data-count="98">0</div>
+                        <div class="lbl">% Қанағаттанған клиент</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="nav-phone">+7 700 123 45 67</div>
-    </div>
 
-    <div class="hero">
-        <h1>Адал Auto</h1>
-        <p>Сенімді серіктес — сапалы қызмет</p>
-        <div class="stats">
-            <div><div class="num">3000+</div><div class="lbl">Жөнделген көлік</div></div>
-            <div><div class="num">98%</div><div class="lbl">Қанағаттанған клиент</div></div>
+        <!-- Неліктен біз -->
+        <section class="section">
+            <h2 class="section-title">Неліктен біз</h2>
+            <p class="section-sub">Бізді таңдаудың 6 себебі</p>
+            <div class="grid-3">
+                <div class="card"><span class="icon">🏆</span><h4>10+ жыл тәжірибе</h4><p>Ондаған жыл бойы жинақталған білім</p></div>
+                <div class="card"><span class="icon">📜</span><h4>Кепілдік беріледі</h4><p>Барлық жұмыстарға кепілдік</p></div>
+                <div class="card"><span class="icon">🔧</span><h4>Түпнұсқа бөлшектер</h4><p>Тек сапалы қосалқы бөлшектер</p></div>
+                <div class="card"><span class="icon">⚙️</span><h4>Заманауи құралдар</h4><p>Ең жаңа диагностика жабдықтары</p></div>
+                <div class="card"><span class="icon">⚡</span><h4>Жылдам қызмет</h4><p>Уақытты бағалаймыз, тез орындаймыз</p></div>
+                <div class="card"><span class="icon">💰</span><h4>Ашық баға саясаты</h4><p>Жасырын төлемдер жоқ</p></div>
+            </div>
+        </section>
+
+        <!-- Жұмыс процесі -->
+        <section class="section">
+            <h2 class="section-title">Жұмыс процесі</h2>
+            <p class="section-sub">Қызмет көрсету кезеңдері</p>
+            <div class="steps">
+                <div class="step"><div class="n">01</div><h4>Өтінім қалдыру</h4><p>Сайт/телефон арқылы</p></div>
+                <div class="step"><div class="n">02</div><h4>Диагностика</h4><p>Көлікті толық тексеру</p></div>
+                <div class="step"><div class="n">03</div><h4>Баға келісу</h4><p>Жұмыс көлемі мен баға</p></div>
+                <div class="step"><div class="n">04</div><h4>Жөндеу</h4><p>Кәсіби жөндеу</p></div>
+                <div class="step"><div class="n">05</div><h4>Көлікті тапсыру</h4><p>Кепілдікпен тапсыру</p></div>
+            </div>
+        </section>
+
+        <!-- Клиент пікірлері -->
+        <section class="section">
+            <h2 class="section-title">Клиент пікірлері</h2>
+            <p class="section-sub">Клиенттеріміз не дейді</p>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="top">
+                        <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Аватар" />
+                        <div class="info"><div class="name">Арман Тілеуов</div><div class="car">Toyota Camry 70</div></div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>Өте жақсы сервис! Қозғалтқышты тез және сапалы жөндеп берді. Ұсынамын!</p>
+                </div>
+                <div class="testimonial">
+                    <div class="top">
+                        <img class="avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Аватар" />
+                        <div class="info"><div class="name">Дәурен Сейтқазин</div><div class="car">BMW X5</div></div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>Ходоваяны толық жөндетіп шықтым. Баға қолжетімді, жұмыс сапалы.</p>
+                </div>
+                <div class="testimonial">
+                    <div class="top">
+                        <img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Аватар" />
+                        <div class="info"><div class="name">Айгүл Қасымова</div><div class="car">Hyundai Tucson</div></div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>Мамандар өз ісін жақсы біледі. Енді тек осында жүргіземін.</p>
+                </div>
+                <div class="testimonial">
+                    <div class="top">
+                        <img class="avatar" src="https://randomuser.me/api/portraits/men/52.jpg" alt="Аватар" />
+                        <div class="info"><div class="name">Болат Жұмабаев</div><div class="car">Mercedes E-Class</div></div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>Өте сапалы қызмет. Уақытында тапсырды. Рахмет!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Карта + контакты -->
+        <div class="map-wrapper">
+            <iframe src="https://yandex.kz/map-widget/v1/?ll=71.430073%2C51.128220&z=16&pt=71.430073,51.128220,pm2rdl"></iframe>
         </div>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Неліктен біз</div>
-        <div class="section-sub">Бізді таңдаудың 6 себебі</div>
-        <div class="grid-3">
-            <div class="card"><div class="icon">🏆</div><h4>10+ жыл тәжірибе</h4><p>Ондаған жыл бойы жинақталған білім</p></div>
-            <div class="card"><div class="icon">📜</div><h4>Кепілдік беріледі</h4><p>Барлық жұмыстарға кепілдік</p></div>
-            <div class="card"><div class="icon">🔧</div><h4>Түпнұсқа бөлшектер</h4><p>Тек сапалы қосалқы бөлшектер</p></div>
-            <div class="card"><div class="icon">⚙️</div><h4>Заманауи құралдар</h4><p>Ең жаңа диагностика жабдықтары</p></div>
-            <div class="card"><div class="icon">⚡</div><h4>Жылдам қызмет</h4><p>Уақытты бағалаймыз, тез орындаймыз</p></div>
-            <div class="card"><div class="icon">💰</div><h4>Ашық баға саясаты</h4><p>Жасырын төлемдер жоқ</p></div>
+        <div class="contacts-row">
+            <span>📍 Астана, Достық 12/1</span>
+            <span>📞 +7 700 123 45 67</span>
+            <span>⏰ 09:00 – 21:00</span>
         </div>
+
+        <footer class="footer">
+            © 2026 Адал Auto · Барлық құқықтар қорғалған
+        </footer>
     </div>
 
-    <div class="section">
-        <div class="section-title">Жұмыс процесі</div>
-        <div class="section-sub">Қызмет көрсету кезеңдері</div>
-        <div class="steps">
-            <div class="step"><div class="n">01</div><h4>Өтінім қалдыру</h4><p>Сайт/телефон арқылы</p></div>
-            <div class="step"><div class="n">02</div><h4>Диагностика</h4><p>Көлікті толық тексеру</p></div>
-            <div class="step"><div class="n">03</div><h4>Баға келісу</h4><p>Жұмыс көлемі мен баға</p></div>
-            <div class="step"><div class="n">04</div><h4>Жөндеу</h4><p>Кәсіби жөндеу</p></div>
-            <div class="step"><div class="n">05</div><h4>Көлікті тапсыру</h4><p>Кепілдікпен тапсыру</p></div>
-        </div>
-    </div>
+    <script>
+        // ===== Анимированные счётчики (Intersection Observer) =====
+        const counters = document.querySelectorAll('.num');
 
-    <div class="section">
-        <div class="section-title">Клиент пікірлері</div>
-        <div class="section-sub">Клиенттеріміз не дейді</div>
-        <div class="testimonials">
-            <div class="testimonial"><div class="name">Арман Тілеуов</div><div class="car">Toyota Camry 70</div><div class="stars">★★★★★</div><p>Өте жақсы сервис! Қозғалтқышты тез және сапалы жөндеп берді. Ұсынамын!</p></div>
-            <div class="testimonial"><div class="name">Дәурен Сейтқазин</div><div class="car">BMW X5</div><div class="stars">★★★★★</div><p>Ходоваяны толық жөндетіп шықтым. Баға қолжетімді, жұмыс сапалы.</p></div>
-            <div class="testimonial"><div class="name">Айгүл Қасымова</div><div class="car">Hyundai Tucson</div><div class="stars">★★★★★</div><p>Мамандар өз ісін жақсы біледі. Енді тек осында жүргіземін.</p></div>
-            <div class="testimonial"><div class="name">Болат Жұмабаев</div><div class="car">Mercedes E-Class</div><div class="stars">★★★★★</div><p>Өте сапалы қызмет. Уақытында тапсырды. Рахмет!</p></div>
-        </div>
-    </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-count'), 10);
+                    let current = 0;
+                    const increment = target / 60; // 60 кадров ~ 1 секунда
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            el.textContent = target + (target === 98 ? '%' : '+');
+                            clearInterval(timer);
+                        } else {
+                            el.textContent = Math.floor(current) + (target === 98 ? '%' : '+');
+                        }
+                    }, 20);
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
 
-    <div class="map"><iframe src="https://yandex.kz/map-widget/v1/?ll=71.430073%2C51.128220&z=16&pt=71.430073,51.128220,pm2rdl"></iframe></div>
-    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; color:rgba(255,255,255,0.2); font-size:14px;">
-        <span>📍 Астана, Достық 12/1</span><span>📞 +7 700 123 45 67</span><span>⏰ 09:00 – 21:00</span>
-    </div>
-    <div class="footer">© 2026 Адал Auto · Барлық құқықтар қорғалған</div>
-</div>
+        counters.forEach(c => observer.observe(c));
+    </script>
+
 </body>
 </html>
