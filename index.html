@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Адал Auto | Бір беттік сайт</title>
+    <title>Гүл әлемі | Гүл дүкені</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
         /* ===== Reset & Base ===== */
@@ -14,13 +14,13 @@
         }
 
         :root {
-            --primary: #818cf8;
-            --primary-dark: #6366f1;
-            --secondary: #c084fc;
-            --bg: #090b12;
+            --primary: #f472b6;
+            --primary-dark: #ec4899;
+            --secondary: #fbbf24;
+            --bg: #0c0a09;
             --surface: rgba(255, 255, 255, 0.04);
             --border: rgba(255, 255, 255, 0.06);
-            --text: #f1f5f9;
+            --text: #faf5f0;
             --text-muted: rgba(255, 255, 255, 0.4);
             --radius: 28px;
             --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -58,7 +58,7 @@
             left: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.20), transparent 70%);
+            background: radial-gradient(circle, rgba(244, 114, 182, 0.20), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
@@ -70,7 +70,7 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.15), transparent 70%);
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.15), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
@@ -83,7 +83,7 @@
             transform: translate(-50%, -50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(129, 140, 248, 0.06), transparent 70%);
+            background: radial-gradient(circle, rgba(244, 114, 182, 0.06), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
@@ -118,7 +118,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(9, 11, 18, 0.7);
+            background: rgba(12, 10, 9, 0.7);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--border);
@@ -201,7 +201,7 @@
         }
         .nav-links a.active {
             color: #fff;
-            background: rgba(129, 140, 248, 0.12);
+            background: rgba(244, 114, 182, 0.12);
         }
         .nav-links a.active::after {
             width: 60%;
@@ -227,7 +227,7 @@
             position: relative;
             border-radius: var(--radius);
             overflow: hidden;
-            background: #0b0e17;
+            background: #0b0a09;
             margin-bottom: 40px;
         }
 
@@ -246,7 +246,7 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: linear-gradient(135deg, rgba(9, 11, 18, 0.7) 0%, rgba(9, 11, 18, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(12, 10, 9, 0.7) 0%, rgba(12, 10, 9, 0.2) 100%);
             pointer-events: none;
         }
 
@@ -273,8 +273,8 @@
 
         .hero .hero-badge {
             display: inline-block;
-            background: rgba(129, 140, 248, 0.12);
-            border: 1px solid rgba(129, 140, 248, 0.15);
+            background: rgba(244, 114, 182, 0.12);
+            border: 1px solid rgba(244, 114, 182, 0.15);
             padding: 6px 18px;
             border-radius: 100px;
             font-size: 12px;
@@ -290,7 +290,7 @@
             font-size: clamp(44px, 8vw, 80px);
             font-weight: 900;
             line-height: 1.05;
-            background: linear-gradient(to right, #ffffff, #a5b4fc, #c084fc);
+            background: linear-gradient(to right, #ffffff, #f9a8d4, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: fadeSlideUp 1s ease-out;
@@ -331,11 +331,11 @@
         .hero .hero-cta .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: #fff;
-            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.25);
+            box-shadow: 0 8px 32px rgba(244, 114, 182, 0.25);
         }
         .hero .hero-cta .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.35);
+            box-shadow: 0 12px 40px rgba(244, 114, 182, 0.35);
         }
         .hero .hero-cta .btn-outline {
             background: rgba(255, 255, 255, 0.04);
@@ -433,7 +433,7 @@
         .card:hover {
             background: rgba(255, 255, 255, 0.07);
             transform: translateY(-10px) scale(1.02);
-            border-color: rgba(129, 140, 248, 0.25);
+            border-color: rgba(244, 114, 182, 0.25);
             box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
         }
 
@@ -457,12 +457,6 @@
         }
         .card:nth-child(6) .icon {
             animation-delay: 2.5s;
-        }
-        .card:nth-child(7) .icon {
-            animation-delay: 3s;
-        }
-        .card:nth-child(8) .icon {
-            animation-delay: 3.5s;
         }
 
         @keyframes floatIcon {
@@ -513,7 +507,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(129, 140, 248, 0.03), transparent);
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.03), transparent);
             opacity: 0;
             transition: 0.4s;
         }
@@ -523,12 +517,12 @@
         .step:hover {
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-6px);
-            border-color: rgba(129, 140, 248, 0.2);
+            border-color: rgba(244, 114, 182, 0.2);
         }
         .step .n {
             font-size: 44px;
             font-weight: 800;
-            color: rgba(129, 140, 248, 0.12);
+            color: rgba(244, 114, 182, 0.12);
             line-height: 1;
             position: relative;
             z-index: 1;
@@ -548,7 +542,7 @@
         .step .step-line {
             width: 40px;
             height: 2px;
-            background: rgba(129, 140, 248, 0.15);
+            background: rgba(244, 114, 182, 0.15);
             margin: 8px auto;
             border-radius: 4px;
         }
@@ -578,7 +572,7 @@
         .testimonial:hover {
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-6px);
-            border-color: rgba(129, 140, 248, 0.15);
+            border-color: rgba(244, 114, 182, 0.15);
         }
         .testimonial .top {
             display: flex;
@@ -591,7 +585,7 @@
             height: 48px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(129, 140, 248, 0.2);
+            border: 2px solid rgba(244, 114, 182, 0.2);
             transition: 0.4s;
         }
         .testimonial:hover .avatar {
@@ -641,7 +635,7 @@
         }
         .price-item:hover {
             transform: translateY(-6px);
-            border-color: rgba(129, 140, 248, 0.2);
+            border-color: rgba(244, 114, 182, 0.2);
             background: rgba(255, 255, 255, 0.06);
         }
         .price-item .service-name {
@@ -689,7 +683,7 @@
         .gallery-item:hover {
             transform: scale(1.04);
             border-color: var(--primary);
-            box-shadow: 0 12px 32px rgba(129, 140, 248, 0.15);
+            box-shadow: 0 12px 32px rgba(244, 114, 182, 0.15);
         }
 
         /* ===== Team ===== */
@@ -715,7 +709,7 @@
         }
         .team-member:hover {
             transform: translateY(-6px);
-            border-color: rgba(129, 140, 248, 0.2);
+            border-color: rgba(244, 114, 182, 0.2);
         }
         .team-member .t-avatar {
             width: 80px;
@@ -723,7 +717,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 12px;
-            border: 2px solid rgba(129, 140, 248, 0.2);
+            border: 2px solid rgba(244, 114, 182, 0.2);
             transition: 0.4s;
         }
         .team-member:hover .t-avatar {
@@ -738,7 +732,7 @@
             color: var(--text-muted);
         }
 
-        /* ===== About text block ===== */
+        /* ===== About block ===== */
         .about-block {
             display: flex;
             flex-wrap: wrap;
@@ -766,7 +760,7 @@
             list-style: none;
         }
         .about-block ul li::before {
-            content: "✅ ";
+            content: "🌸 ";
             color: var(--primary);
         }
 
@@ -798,7 +792,7 @@
             transition: 0.3s;
         }
         .contact-info .item:hover {
-            border-color: rgba(129, 140, 248, 0.2);
+            border-color: rgba(244, 114, 182, 0.2);
             background: rgba(255, 255, 255, 0.05);
         }
         .contact-info .item .ci-icon {
@@ -808,7 +802,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(129, 140, 248, 0.08);
+            background: rgba(244, 114, 182, 0.08);
             border-radius: 12px;
         }
         .contact-info .item .ci-text {
@@ -832,7 +826,7 @@
             transition: 0.4s;
         }
         .map-wrapper:hover {
-            border-color: rgba(129, 140, 248, 0.2);
+            border-color: rgba(244, 114, 182, 0.2);
         }
         .map-wrapper iframe {
             width: 100%;
@@ -962,13 +956,13 @@
         <!-- ===== Navigation (Sticky) ===== -->
         <nav class="nav" id="navbar">
             <div class="logo">
-                Адал <span>Auto</span>
-                <span class="badge">PRO</span>
+                Гүл <span>Әлемі</span>
+                <span class="badge">🌷</span>
             </div>
             <div class="nav-links" id="navLinks">
                 <a href="#home" class="active">Басты</a>
                 <a href="#about">Біз туралы</a>
-                <a href="#services">Қызметтер</a>
+                <a href="#catalog">Гүлдер</a>
                 <a href="#prices">Бағалар</a>
                 <a href="#gallery">Галерея</a>
                 <a href="#process">Процесс</a>
@@ -986,127 +980,127 @@
         <!-- ============================================================ -->
         <section id="home" class="hero-wrapper">
             <video class="hero-video" autoplay loop muted playsinline>
-                <source src="https://cdn.coverr.co/videos/coverr-mechanic-working-on-a-car-engine-3274/1080p.mp4" type="video/mp4" />
+                <source src="https://cdn.coverr.co/videos/coverr-pink-rose-flowers-5011/1080p.mp4" type="video/mp4" />
             </video>
             <div class="hero-overlay"></div>
             <canvas id="hero-particles"></canvas>
             <div class="hero">
-                <div class="hero-badge">✦ 10+ жыл сенімді сервис</div>
-                <h1>Адал Auto</h1>
-                <p class="subtitle">Сенімді серіктес — сапалы қызмет</p>
+                <div class="hero-badge">✦ 5 жыл сенімді гүл дүкені</div>
+                <h1>Гүл Әлемі</h1>
+                <p class="subtitle">Әр букет – махаббаттың бір белгісі</p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">✆ Байланыс</a>
-                    <a href="#services" class="btn btn-outline">Қызметтер</a>
+                    <a href="#contact" class="btn btn-primary">✆ Тапсырыс беру</a>
+                    <a href="#catalog" class="btn btn-outline">Букеттерді көру</a>
                 </div>
                 <div class="stats">
                     <div>
-                        <div class="num" data-count="3000">0<span>+</span></div>
-                        <div class="lbl">Жөнделген көлік</div>
+                        <div class="num" data-count="1500">0<span>+</span></div>
+                        <div class="lbl">Қуанған клиент</div>
                     </div>
                     <div>
-                        <div class="num" data-count="98">0<span>%</span></div>
-                        <div class="lbl">Қанағаттанған клиент</div>
+                        <div class="num" data-count="99">0<span>%</span></div>
+                        <div class="lbl">Оң пікірлер</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECTION: ABOUT (Біз туралы) -->
+        <!-- SECTION: ABOUT -->
         <!-- ============================================================ -->
         <section id="about" class="section">
             <h2 class="section-title">Біз <span class="highlight">туралы</span></h2>
-            <p class="section-sub">Миссиямыз – сіздің көлігіңізге екінші өмір сыйлау</p>
+            <p class="section-sub">Гүлдер арқылы эмоцияларды жеткіземіз</p>
 
             <div class="about-block">
                 <div>
-                    <h3>🚗 Біз кімміз?</h3>
-                    <p>«Адал Auto» – 2015 жылдан бері Астанада жұмыс істейтін көлік жөндеу орталығы. Біз әр көлікке жеке қараймыз, тек түпнұсқа бөлшектерді пайдаланамыз және әр жұмысқа кепілдік береміз. Біздің мақсатымыз – клиенттердің сеніміне ие болу және олардың көліктерін ұзақ жылдар бойы қызмет ететіндей етіп жөндеу.</p>
+                    <h3>🌹 Біз кімміз?</h3>
+                    <p>«Гүл Әлемі» – 2020 жылдан бері Астанада жұмыс істейтін гүл дүкені. Біз әр букетке жан саламыз, гүлдерді тек сапалы жеткізушілерден аламыз және әр тапсырысты уақытында жеткіземіз. Мақсатымыз – сіздің сезімдеріңізді гүл тілімен жеткізу.</p>
                 </div>
                 <div>
-                    <h3>📈 Біздің құндылықтар</h3>
+                    <h3>💐 Біздің құндылықтар</h3>
                     <ul>
-                        <li>Сапа – бірінші орында</li>
-                        <li>Адалдық – бағадан таймаймыз</li>
-                        <li>Жауапкершілік – әр жұмысқа кепілдік</li>
-                        <li>Үздіксіз даму – жаңа технологиялар</li>
+                        <li>Тазалық – әр гүл мінсіз болуы керек</li>
+                        <li>Шығармашылық – ерекше букеттер</li>
+                        <li>Жылдамдық – тапсырысты дәл уақытында</li>
+                        <li>Қамқорлық – клиенттің көңіл-күйі</li>
                     </ul>
                 </div>
             </div>
 
-            <h3 class="section-sub" style="font-size: 20px; font-weight: 600;">Біздің мамандар</h3>
+            <h3 class="section-sub" style="font-size: 20px; font-weight: 600;">Біздің флористер</h3>
             <div class="team-grid">
-                <div class="team-member"><img class="t-avatar" src="https://randomuser.me/api/portraits/men/11.jpg" alt="Маман" /><div class="t-name">Ерлан Омаров</div><div class="t-role">Бас механик, 12 жыл</div></div>
-                <div class="team-member"><img class="t-avatar" src="https://randomuser.me/api/portraits/men/23.jpg" alt="Маман" /><div class="t-name">Марат Смағұлов</div><div class="t-role">Электрик, 8 жыл</div></div>
-                <div class="team-member"><img class="t-avatar" src="https://randomuser.me/api/portraits/women/17.jpg" alt="Маман" /><div class="t-name">Айжан Құрманова</div><div class="t-role">Диагност, 6 жыл</div></div>
-                <div class="team-member"><img class="t-avatar" src="https://randomuser.me/api/portraits/men/46.jpg" alt="Маман" /><div class="t-name">Данияр Айтбаев</div><div class="t-role">Шебер-ұста, 10 жыл</div></div>
+                <div class="team-member"><img class="t-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Флорист" /><div class="t-name">Айдана Серік</div><div class="t-role">Бас флорист, 7 жыл</div></div>
+                <div class="team-member"><img class="t-avatar" src="https://randomuser.me/api/portraits/women/55.jpg" alt="Флорист" /><div class="t-name">Мөлдір Төлеу</div><div class="t-role">Флорист-дизайнер, 5 жыл</div></div>
+                <div class="team-member"><img class="t-avatar" src="https://randomuser.me/api/portraits/men/33.jpg" alt="Флорист" /><div class="t-name">Ержан Болат</div><div class="t-role">Жеткізуші, 3 жыл</div></div>
+                <div class="team-member"><img class="t-avatar" src="https://randomuser.me/api/portraits/women/22.jpg" alt="Флорист" /><div class="t-name">Гүлмира Қанат</div><div class="t-role">Букеттерді жинаушы, 4 жыл</div></div>
             </div>
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECTION: SERVICES -->
+        <!-- SECTION: CATALOG (Гүлдер) -->
         <!-- ============================================================ -->
-        <section id="services" class="section">
-            <h2 class="section-title">Біздің <span class="highlight">қызметтер</span></h2>
-            <p class="section-sub">Кәсіби шешімдер, бір шаңырақ астында</p>
+        <section id="catalog" class="section">
+            <h2 class="section-title">Біздің <span class="highlight">букеттер</span></h2>
+            <p class="section-sub">Әр көңіл-күйге арналған гүл композициялары</p>
             <div class="grid-3">
-                <div class="card"><span class="icon">🔩</span><h4>Қозғалтқыш жөндеу</h4><p>Барлық типтегі қозғалтқыштарды диагностикалау және жөндеу</p></div>
-                <div class="card"><span class="icon">🛞</span><h4>Ходовая бөлігі</h4><p>Амортизаторлар, рычагтар, дөңгелектерді теңгеру</p></div>
-                <div class="card"><span class="icon">🧰</span><h4>Электроника</h4><p>Борттық компьютерлер, сенсорлар, электр тізбектері</p></div>
-                <div class="card"><span class="icon">🛢️</span><h4>Май ауыстыру</h4><p>Қозғалтқыш, трансмиссия майларын сапалы ауыстыру</p></div>
-                <div class="card"><span class="icon">❄️</span><h4>Кондиционер</h4><p>Диагностика, фреон толтыру, жүйені тазалау</p></div>
-                <div class="card"><span class="icon">📋</span><h4>Кешенді диагностика</h4><p>Көліктің барлық жүйесін тексеру, ақауларды анықтау</p></div>
+                <div class="card"><span class="icon">🌹</span><h4>Қызыл раушан</h4><p>Классикалық романтика, 21 гүл</p></div>
+                <div class="card"><span class="icon">🌷</span><h4>Қызғалдақ</h4><p>Көктемгі көңіл-күй, 15 гүл</p></div>
+                <div class="card"><span class="icon">🌻</span><h4>Күнбағыс</h4><p>Жылы лебіз, 11 гүл</p></div>
+                <div class="card"><span class="icon">🌸</span><h4>Сакура</h4><p>Шығыс әсемдігі, 9 гүл</p></div>
+                <div class="card"><span class="icon">🌺</span><h4>Гибискус</h4><p>Экзотикалық, 7 гүл</p></div>
+                <div class="card"><span class="icon">💐</span><h4>Аралас букет</h4><p>Түрлі гүлдерден, 31 гүл</p></div>
             </div>
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECTION: PRICES -->
+        <!-- SECTION: PRICES (Бағалар) -->
         <!-- ============================================================ -->
         <section id="prices" class="section">
-            <h2 class="section-title">Қызмет <span class="highlight">бағалары</span></h2>
-            <p class="section-sub">Ашық әрі түсінікті баға саясаты</p>
+            <h2 class="section-title">Бағалар <span class="highlight">мен қызметтер</span></h2>
+            <p class="section-sub">Ашық әрі әділ баға саясаты</p>
             <div class="price-grid">
-                <div class="price-item"><div class="service-name">Диагностика</div><div class="service-price">5 000 ₸</div><div class="service-desc">Толық компьютерлік тексеру</div></div>
-                <div class="price-item"><div class="service-name">Май ауыстыру</div><div class="service-price">8 000 ₸</div><div class="service-desc">Қозғалтқыш + сүзгілер</div></div>
-                <div class="price-item"><div class="service-name">Ходовая жөндеу</div><div class="service-price">12 000 ₸</div><div class="service-desc">Бір оське толық қызмет</div></div>
-                <div class="price-item"><div class="service-name">Кондиционер</div><div class="service-price">7 000 ₸</div><div class="service-desc">Фреон толтыру + дезинфекция</div></div>
-                <div class="price-item"><div class="service-name">Электрика</div><div class="service-price">6 000 ₸</div><div class="service-desc">Бір түйіннің диагностикасы</div></div>
-                <div class="price-item"><div class="service-name">Кешенді жөндеу</div><div class="service-price">25 000 ₸</div><div class="service-desc">Барлық жүйелерді тексеру + жөндеу</div></div>
+                <div class="price-item"><div class="service-name">Қызыл раушан</div><div class="service-price">12 000 ₸</div><div class="service-desc">21 гүл, үлкен букет</div></div>
+                <div class="price-item"><div class="service-name">Қызғалдақ</div><div class="service-price">8 000 ₸</div><div class="service-desc">15 гүл, түрлі түсті</div></div>
+                <div class="price-item"><div class="service-name">Күнбағыс</div><div class="service-price">9 000 ₸</div><div class="service-desc">11 гүл, күн сәулесі</div></div>
+                <div class="price-item"><div class="service-name">Жеткізу</div><div class="service-price">2 000 ₸</div><div class="service-desc">Қала ішінде тегін (3000₸-дан)</div></div>
+                <div class="price-item"><div class="service-name">Букет жинау</div><div class="service-price">3 000 ₸</div><div class="service-desc">Жеке дизайн бойынша</div></div>
+                <div class="price-item"><div class="service-name">Тәуліктік жеткізу</div><div class="service-price">5 000 ₸</div><div class="service-desc">Кез келген уақытта</div></div>
             </div>
-            <p style="text-align: center; color: var(--text-muted); margin-top: 20px; font-size: 14px;">* Бағалар жұмыс көлеміне қарай өзгеруі мүмкін. Нақты бағаны диагностикадан кейін айтамыз.</p>
+            <p style="text-align: center; color: var(--text-muted); margin-top: 20px; font-size: 14px;">* Бағалар гүл санына және безендіруге байланысты өзгеруі мүмкін.</p>
         </section>
 
         <!-- ============================================================ -->
         <!-- SECTION: GALLERY -->
         <!-- ============================================================ -->
         <section id="gallery" class="section">
-            <h2 class="section-title">Біздің <span class="highlight">галерея</span></h2>
-            <p class="section-sub">Жұмыс барысынан фотосүреттер</p>
+            <h2 class="section-title">Гүл <span class="highlight">галереясы</span></h2>
+            <p class="section-sub">Біздің жұмыстарымыздан үзінділер</p>
             <div class="gallery-grid">
-                <div class="gallery-item" style="background: #141824;">🔧</div>
-                <div class="gallery-item" style="background: #1c1f2e;">⚙️</div>
-                <div class="gallery-item" style="background: #141824;">🛠️</div>
-                <div class="gallery-item" style="background: #1c1f2e;">🔩</div>
-                <div class="gallery-item" style="background: #141824;">🚗</div>
-                <div class="gallery-item" style="background: #1c1f2e;">🛞</div>
-                <div class="gallery-item" style="background: #141824;">🧰</div>
-                <div class="gallery-item" style="background: #1c1f2e;">📸</div>
+                <div class="gallery-item" style="background: #1e1815;">🌹</div>
+                <div class="gallery-item" style="background: #261f1b;">🌷</div>
+                <div class="gallery-item" style="background: #1e1815;">🌻</div>
+                <div class="gallery-item" style="background: #261f1b;">🌸</div>
+                <div class="gallery-item" style="background: #1e1815;">🌺</div>
+                <div class="gallery-item" style="background: #261f1b;">💐</div>
+                <div class="gallery-item" style="background: #1e1815;">🥀</div>
+                <div class="gallery-item" style="background: #261f1b;">🌿</div>
             </div>
-            <p style="text-align: center; color: var(--text-muted); margin-top: 16px; font-size: 13px;">Біздің шеберханадағы сәттер</p>
+            <p style="text-align: center; color: var(--text-muted); margin-top: 16px; font-size: 13px;">Біздің әр букет – сурет салынған шедевр</p>
         </section>
 
         <!-- ============================================================ -->
         <!-- SECTION: PROCESS -->
         <!-- ============================================================ -->
         <section id="process" class="section">
-            <h2 class="section-title">Жұмыс <span class="highlight">процесі</span></h2>
-            <p class="section-sub">Қызмет көрсету кезеңдері</p>
+            <h2 class="section-title">Тапсырыс <span class="highlight">процесі</span></h2>
+            <p class="section-sub">Бізбен жұмыс істеу қаншалықты оңай?</p>
             <div class="steps">
-                <div class="step"><div class="n">01</div><h4>Өтінім</h4><p>Сайт немесе телефон арқылы</p><div class="step-line"></div></div>
-                <div class="step"><div class="n">02</div><h4>Диагностика</h4><p>Көлікті толық тексеру</p><div class="step-line"></div></div>
-                <div class="step"><div class="n">03</div><h4>Баға келісу</h4><p>Жұмыс көлемі мен бағасы</p><div class="step-line"></div></div>
-                <div class="step"><div class="n">04</div><h4>Жөндеу</h4><p>Кәсіби мамандар қолымен</p><div class="step-line"></div></div>
-                <div class="step"><div class="n">05</div><h4>Тапсыру</h4><p>Кепілдікпен қайтарып беру</p><div class="step-line"></div></div>
+                <div class="step"><div class="n">01</div><h4>Тапсырыс</h4><p>Сайт немесе телефон арқылы</p><div class="step-line"></div></div>
+                <div class="step"><div class="n">02</div><h4>Букет таңдау</h4><p>Каталогтан өз нұсқаңызды</p><div class="step-line"></div></div>
+                <div class="step"><div class="n">03</div><h4>Төлем</h4><p>Карта немесе қолма-қол</p><div class="step-line"></div></div>
+                <div class="step"><div class="n">04</div><h4>Жинау</h4><p>Флористер букетті жинайды</p><div class="step-line"></div></div>
+                <div class="step"><div class="n">05</div><h4>Жеткізу</h4><p>Келісілген уақытта, кепілдікпен</p><div class="step-line"></div></div>
             </div>
         </section>
 
@@ -1115,27 +1109,27 @@
         <!-- ============================================================ -->
         <section id="testimonials" class="section">
             <h2 class="section-title">Клиент <span class="highlight">пікірлері</span></h2>
-            <p class="section-sub">Бізге сенген жүздеген клиенттер</p>
+            <p class="section-sub">Біздің гүлдермен бөліскен эмоциялар</p>
             <div class="testimonials">
                 <div class="testimonial">
-                    <div class="top"><img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Аватар" /><div class="info"><div class="name">Арман Тілеуов</div><div class="car">Toyota Camry 70</div></div></div>
+                    <div class="top"><img class="avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Аватар" /><div class="info"><div class="name">Ақмарал Қ.</div><div class="car">Ана күніне букет</div></div></div>
                     <div class="stars">★★★★★</div>
-                    <p>Өте жақсы сервис! Қозғалтқышты тез әрі сапалы жөндеп берді. Ұсынамын!</p>
+                    <p>Өте әдемі букет! Анам қатты қуанды. Гүлдер келесі күнге дейін саңқылдап тұрды.</p>
                 </div>
                 <div class="testimonial">
-                    <div class="top"><img class="avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Аватар" /><div class="info"><div class="name">Дәурен Сейтқазин</div><div class="car">BMW X5</div></div></div>
+                    <div class="top"><img class="avatar" src="https://randomuser.me/api/portraits/men/41.jpg" alt="Аватар" /><div class="info"><div class="name">Бекзат С.</div><div class="car">Қызына тойға</div></div></div>
                     <div class="stars">★★★★★</div>
-                    <p>Ходоваяны толық жөндетіп шықтым. Бағасы қолжетімді, сапасы тамаша.</p>
+                    <p>Тапсырыс уақытында жеткізілді, гүлдер мінсіз, безендіруі өте әдемі. Рекомендую!</p>
                 </div>
                 <div class="testimonial">
-                    <div class="top"><img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Аватар" /><div class="info"><div class="name">Айгүл Қасымова</div><div class="car">Hyundai Tucson</div></div></div>
+                    <div class="top"><img class="avatar" src="https://randomuser.me/api/portraits/women/47.jpg" alt="Аватар" /><div class="info"><div class="name">Жанар М.</div><div class="car">Жұбайына сюрприз</div></div></div>
                     <div class="stars">★★★★★</div>
-                    <p>Мамандар өз ісін жақсы біледі. Енді тек осында жүргіземін. Рахмет!</p>
+                    <p>Раушан гүлдерінің хош иісі керемет! Менің көңіл-күйімді көтерді. Рахмет!</p>
                 </div>
                 <div class="testimonial">
-                    <div class="top"><img class="avatar" src="https://randomuser.me/api/portraits/men/52.jpg" alt="Аватар" /><div class="info"><div class="name">Болат Жұмабаев</div><div class="car">Mercedes E-Class</div></div></div>
+                    <div class="top"><img class="avatar" src="https://randomuser.me/api/portraits/men/56.jpg" alt="Аватар" /><div class="info"><div class="name">Нұржан А.</div><div class="car">Іскерлік букет</div></div></div>
                     <div class="stars">★★★★★</div>
-                    <p>Уақытында тапсырды, сапасы керемет. Бұл жерде алданып қалмайсыз!</p>
+                    <p>Келіссөзге арналған букетті тапсырдым, серіктестерге ұнады. Кәсіби көзқарас.</p>
                 </div>
             </div>
         </section>
@@ -1145,13 +1139,13 @@
         <!-- ============================================================ -->
         <section id="contact" class="section">
             <h2 class="section-title">Бізбен <span class="highlight">байланыс</span></h2>
-            <p class="section-sub">Кез келген сұрақ бойынша хабарласыңыз</p>
+            <p class="section-sub">Кез келген сұрақ немесе тапсырыс бойынша хабарласыңыз</p>
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="item"><div class="ci-icon">📍</div><div class="ci-text"><strong>Мекенжай</strong><span>Астана, Достық 12/1</span></div></div>
                     <div class="item"><div class="ci-icon">📞</div><div class="ci-text"><strong>Телефон</strong><span>+7 700 123 45 67</span></div></div>
                     <div class="item"><div class="ci-icon">⏰</div><div class="ci-text"><strong>Жұмыс уақыты</strong><span>Дүйсенбі – Жексенбі · 09:00 – 21:00</span></div></div>
-                    <div class="item"><div class="ci-icon">✉️</div><div class="ci-text"><strong>Email</strong><span>info@adalauto.kz</span></div></div>
+                    <div class="item"><div class="ci-icon">✉️</div><div class="ci-text"><strong>Email</strong><span>info@gulalemi.kz</span></div></div>
                 </div>
                 <div class="map-wrapper">
                     <iframe src="https://yandex.kz/map-widget/v1/?ll=71.430073%2C51.128220&z=16&pt=71.430073,51.128220,pm2rdl"></iframe>
@@ -1161,7 +1155,7 @@
 
         <!-- ===== Footer ===== -->
         <footer class="footer">
-            © 2026 <a href="#">Адал Auto</a> · Барлық құқықтар қорғалған
+            © 2026 <a href="#">Гүл Әлемі</a> · Барлық құқықтар қорғалған
         </footer>
 
     </div>
@@ -1206,7 +1200,7 @@
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(129, 140, 248, ${this.opacity})`;
+                    ctx.fillStyle = `rgba(244, 114, 182, ${this.opacity})`;
                     ctx.fill();
                 }
             }
@@ -1224,7 +1218,7 @@
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(129, 140, 248, ${alpha})`;
+                            ctx.strokeStyle = `rgba(244, 114, 182, ${alpha})`;
                             ctx.lineWidth = 0.6;
                             ctx.stroke();
                         }
@@ -1243,7 +1237,7 @@
         }
 
         // ============================================================
-        //  2. ANIMATED COUNTERS (Intersection Observer)
+        //  2. ANIMATED COUNTERS
         // ============================================================
         const counters = document.querySelectorAll('.num');
         const counterObserver = new IntersectionObserver((entries) => {
@@ -1270,12 +1264,11 @@
         counters.forEach(c => counterObserver.observe(c));
 
         // ============================================================
-        //  3. SCROLL REVEAL (Intersection Observer for all animated blocks)
+        //  3. SCROLL REVEAL (Intersection Observer)
         // ============================================================
         const revealElements = document.querySelectorAll(
             '.card, .step, .testimonial, .price-item, .gallery-item, .team-member'
         );
-
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1283,7 +1276,6 @@
                 }
             });
         }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
-
         revealElements.forEach(el => revealObserver.observe(el));
 
         // ============================================================
@@ -1306,7 +1298,7 @@
         sections.forEach(section => navObserver.observe(section));
 
         // ============================================================
-        //  5. SMOOTH SCROLL for nav links (prevent default)
+        //  5. SMOOTH SCROLL for nav links & hero buttons
         // ============================================================
         document.querySelectorAll('.nav-links a, .hero-cta a').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -1321,8 +1313,8 @@
             });
         });
 
-        console.log('🚗 Адал Auto — бір беттік (landing page) нұсқасы');
-        console.log('📌 Барлық бөлімдер бір бетте, навигация тегіс скролл жасайды');
+        console.log('🌸 Гүл Әлемі — бір беттік гүл дүкені сайты');
+        console.log('📌 Навигация якорьлар арқылы бөлімдерге тегіс скролл жасайды');
     </script>
 
 </body>
