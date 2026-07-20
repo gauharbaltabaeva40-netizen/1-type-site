@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Гүл әлемі | Гүл дүкені</title>
+    <title>Гүл Әлемі | Гүл дүкені</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
         /* ===== Reset & Base ===== */
@@ -406,16 +406,10 @@
             gap: 24px;
         }
 
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-        }
-
         .card {
             background: var(--surface);
             border: 1px solid var(--border);
-            padding: 30px 18px;
+            padding: 24px 16px;
             border-radius: var(--radius);
             text-align: center;
             transition: var(--transition);
@@ -423,6 +417,9 @@
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .card.visible {
@@ -437,26 +434,35 @@
             box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
         }
 
-        .card .icon {
-            font-size: 44px;
-            margin-bottom: 12px;
-            display: block;
+        .card .icon-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 14px;
+            border: 2px solid rgba(244, 114, 182, 0.2);
+            transition: 0.4s;
             animation: floatIcon 4s ease-in-out infinite;
         }
-        .card:nth-child(2) .icon {
+        .card:nth-child(2) .icon-img {
             animation-delay: 0.5s;
         }
-        .card:nth-child(3) .icon {
+        .card:nth-child(3) .icon-img {
             animation-delay: 1s;
         }
-        .card:nth-child(4) .icon {
+        .card:nth-child(4) .icon-img {
             animation-delay: 1.5s;
         }
-        .card:nth-child(5) .icon {
+        .card:nth-child(5) .icon-img {
             animation-delay: 2s;
         }
-        .card:nth-child(6) .icon {
+        .card:nth-child(6) .icon-img {
             animation-delay: 2.5s;
+        }
+
+        .card:hover .icon-img {
+            border-color: var(--primary);
+            transform: scale(1.05);
         }
 
         @keyframes floatIcon {
@@ -465,7 +471,7 @@
                 transform: translateY(0) scale(1);
             }
             50% {
-                transform: translateY(-8px) scale(1.05);
+                transform: translateY(-8px) scale(1.03);
             }
         }
 
@@ -656,7 +662,7 @@
         /* ===== Gallery ===== */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 20px;
         }
         .gallery-item {
@@ -664,11 +670,6 @@
             overflow: hidden;
             border: 1px solid var(--border);
             aspect-ratio: 1 / 1;
-            background: var(--surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
             transition: var(--transition);
             opacity: 0;
             transform: scale(0.9);
@@ -676,14 +677,23 @@
             cursor: default;
             position: relative;
         }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
         .gallery-item.visible {
             opacity: 1;
             transform: scale(1);
         }
         .gallery-item:hover {
-            transform: scale(1.04);
+            transform: scale(1.03);
             border-color: var(--primary);
             box-shadow: 0 12px 32px rgba(244, 114, 182, 0.15);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
         }
 
         /* ===== Team ===== */
@@ -908,6 +918,10 @@
             .about-block {
                 flex-direction: column;
             }
+            .card .icon-img {
+                width: 60px;
+                height: 60px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -915,7 +929,7 @@
                 padding: 12px 10px 0;
             }
             .card {
-                padding: 22px 12px;
+                padding: 18px 12px;
             }
             .testimonial .top {
                 flex-direction: column;
@@ -933,7 +947,7 @@
                 gap: 12px;
             }
             .gallery-item {
-                font-size: 40px;
+                aspect-ratio: 1/1;
             }
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1038,23 +1052,47 @@
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECTION: CATALOG (Гүлдер) -->
+        <!-- SECTION: CATALOG (Гүлдер) - REAL IMAGES -->
         <!-- ============================================================ -->
         <section id="catalog" class="section">
             <h2 class="section-title">Біздің <span class="highlight">букеттер</span></h2>
             <p class="section-sub">Әр көңіл-күйге арналған гүл композициялары</p>
             <div class="grid-3">
-                <div class="card"><span class="icon">🌹</span><h4>Қызыл раушан</h4><p>Классикалық романтика, 21 гүл</p></div>
-                <div class="card"><span class="icon">🌷</span><h4>Қызғалдақ</h4><p>Көктемгі көңіл-күй, 15 гүл</p></div>
-                <div class="card"><span class="icon">🌻</span><h4>Күнбағыс</h4><p>Жылы лебіз, 11 гүл</p></div>
-                <div class="card"><span class="icon">🌸</span><h4>Сакура</h4><p>Шығыс әсемдігі, 9 гүл</p></div>
-                <div class="card"><span class="icon">🌺</span><h4>Гибискус</h4><p>Экзотикалық, 7 гүл</p></div>
-                <div class="card"><span class="icon">💐</span><h4>Аралас букет</h4><p>Түрлі гүлдерден, 31 гүл</p></div>
+                <div class="card">
+                    <img class="icon-img" src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=200&h=200&fit=crop" alt="Қызыл раушан" />
+                    <h4>Қызыл раушан</h4>
+                    <p>Классикалық романтика, 21 гүл</p>
+                </div>
+                <div class="card">
+                    <img class="icon-img" src="https://images.unsplash.com/photo-1526046364405-c5774e3a9b3a?w=200&h=200&fit=crop" alt="Қызғалдақ" />
+                    <h4>Қызғалдақ</h4>
+                    <p>Көктемгі көңіл-күй, 15 гүл</p>
+                </div>
+                <div class="card">
+                    <img class="icon-img" src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=200&h=200&fit=crop" alt="Күнбағыс" />
+                    <h4>Күнбағыс</h4>
+                    <p>Жылы лебіз, 11 гүл</p>
+                </div>
+                <div class="card">
+                    <img class="icon-img" src="https://images.unsplash.com/photo-1522383225653-ed111181a951?w=200&h=200&fit=crop" alt="Сакура" />
+                    <h4>Сакура</h4>
+                    <p>Шығыс әсемдігі, 9 гүл</p>
+                </div>
+                <div class="card">
+                    <img class="icon-img" src="https://images.unsplash.com/photo-1557683311-eac922347aa1?w=200&h=200&fit=crop" alt="Гибискус" />
+                    <h4>Гибискус</h4>
+                    <p>Экзотикалық, 7 гүл</p>
+                </div>
+                <div class="card">
+                    <img class="icon-img" src="https://images.unsplash.com/photo-1561181286-d3fee7d29164?w=200&h=200&fit=crop" alt="Аралас букет" />
+                    <h4>Аралас букет</h4>
+                    <p>Түрлі гүлдерден, 31 гүл</p>
+                </div>
             </div>
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECTION: PRICES (Бағалар) -->
+        <!-- SECTION: PRICES -->
         <!-- ============================================================ -->
         <section id="prices" class="section">
             <h2 class="section-title">Бағалар <span class="highlight">мен қызметтер</span></h2>
@@ -1071,20 +1109,20 @@
         </section>
 
         <!-- ============================================================ -->
-        <!-- SECTION: GALLERY -->
+        <!-- SECTION: GALLERY - REAL IMAGES -->
         <!-- ============================================================ -->
         <section id="gallery" class="section">
             <h2 class="section-title">Гүл <span class="highlight">галереясы</span></h2>
             <p class="section-sub">Біздің жұмыстарымыздан үзінділер</p>
             <div class="gallery-grid">
-                <div class="gallery-item" style="background: #1e1815;">🌹</div>
-                <div class="gallery-item" style="background: #261f1b;">🌷</div>
-                <div class="gallery-item" style="background: #1e1815;">🌻</div>
-                <div class="gallery-item" style="background: #261f1b;">🌸</div>
-                <div class="gallery-item" style="background: #1e1815;">🌺</div>
-                <div class="gallery-item" style="background: #261f1b;">💐</div>
-                <div class="gallery-item" style="background: #1e1815;">🥀</div>
-                <div class="gallery-item" style="background: #261f1b;">🌿</div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=400&fit=crop" alt="Гүл" /></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?w=400&h=400&fit=crop" alt="Гүл" /></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1470509037663-58ac2ef4c3b8?w=400&h=400&fit=crop" alt="Гүл" /></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=400&h=400&fit=crop" alt="Гүл" /></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=400&h=400&fit=crop" alt="Гүл" /></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?w=400&h=400&fit=crop" alt="Гүл" /></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=400&fit=crop" alt="Гүл" /></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=400&h=400&fit=crop" alt="Гүл" /></div>
             </div>
             <p style="text-align: center; color: var(--text-muted); margin-top: 16px; font-size: 13px;">Біздің әр букет – сурет салынған шедевр</p>
         </section>
@@ -1264,7 +1302,7 @@
         counters.forEach(c => counterObserver.observe(c));
 
         // ============================================================
-        //  3. SCROLL REVEAL (Intersection Observer)
+        //  3. SCROLL REVEAL
         // ============================================================
         const revealElements = document.querySelectorAll(
             '.card, .step, .testimonial, .price-item, .gallery-item, .team-member'
@@ -1313,7 +1351,7 @@
             });
         });
 
-        console.log('🌸 Гүл Әлемі — бір беттік гүл дүкені сайты');
+        console.log('🌸 Гүл Әлемі — нақты суреттермен безендірілген бір беттік сайт');
         console.log('📌 Навигация якорьлар арқылы бөлімдерге тегіс скролл жасайды');
     </script>
 
