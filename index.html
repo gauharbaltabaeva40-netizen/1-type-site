@@ -3,31 +3,61 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Адал Auto | Визитка</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>Адал Auto | Көлік сервисі</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
+        /* ===== Reset & Base ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #090b12;
-            color: #f1f5f9;
-            min-height: 100vh;
-            overflow-x: hidden;
+        :root {
+            --primary: #818cf8;
+            --primary-dark: #6366f1;
+            --secondary: #c084fc;
+            --bg: #090b12;
+            --surface: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.06);
+            --text: #f1f5f9;
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --radius: 28px;
+            --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* ===== Фоновые свечения ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        /* ===== Glow Orbs ===== */
         .glow1 {
             position: fixed;
             top: -30%;
             left: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.20), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
@@ -39,27 +69,187 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.2), transparent 70%);
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
             animation: pulseGlow 10s ease-in-out infinite alternate-reverse;
         }
-
-        @keyframes pulseGlow {
-            0% { opacity: 0.5; transform: scale(1) translate(0, 0); }
-            100% { opacity: 1; transform: scale(1.3) translate(20px, -20px); }
+        .glow3 {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.06), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 12s ease-in-out infinite alternate;
         }
 
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.4;
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.4) translate(20px, -20px);
+            }
+        }
+
+        /* ===== Container ===== */
         .container {
             position: relative;
             z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 24px 20px;
+            padding: 20px 20px 0;
         }
 
-        /* ===== Фоновое видео (Hero) ===== */
+        /* ===== Navigation ===== */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 10px 28px;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 10;
+            animation: fadeDown 0.8s ease-out;
+        }
+
+        @keyframes fadeDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo .badge {
+            font-size: 10px;
+            background: var(--primary);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 100px;
+            -webkit-text-fill-color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .nav-links button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: inherit;
+            position: relative;
+        }
+        .nav-links button::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 2px;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            transition: 0.3s;
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+        .nav-links button:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .nav-links button.active {
+            color: #fff;
+            background: rgba(129, 140, 248, 0.12);
+        }
+        .nav-links button.active::after {
+            width: 60%;
+        }
+
+        .nav-phone {
+            color: var(--primary);
+            font-weight: 700;
+            white-space: nowrap;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-phone svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--primary);
+        }
+
+        /* ===== Pages System ===== */
+        .page {
+            display: none;
+            animation: pageIn 0.6s ease-out forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== Hero ===== */
+        .hero-wrapper {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #0b0e17;
+            margin-bottom: 30px;
+        }
+
         .hero-video {
             position: absolute;
             top: 0;
@@ -67,154 +257,171 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -1;
-            filter: brightness(0.35) saturate(1.2);
+            z-index: 0;
+            filter: brightness(0.30) saturate(1.3) contrast(1.1);
         }
 
-        .hero-wrapper {
-            position: relative;
-            border-radius: 40px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            background: #0b0e17;
+        /* Hero overlay gradient */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(135deg, rgba(9, 11, 18, 0.7) 0%, rgba(9, 11, 18, 0.2) 100%);
+            pointer-events: none;
+        }
+
+        /* Animated particles canvas */
+        #hero-particles {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
         }
 
         .hero {
             position: relative;
+            z-index: 3;
             text-align: center;
-            padding: 70px 20px 50px;
-            min-height: 480px;
+            padding: 80px 20px 60px;
+            min-height: 520px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(2px);
+        }
+
+        .hero .hero-badge {
+            display: inline-block;
+            background: rgba(129, 140, 248, 0.12);
+            border: 1px solid rgba(129, 140, 248, 0.15);
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            animation: fadeSlideUp 0.8s ease-out;
+            backdrop-filter: blur(4px);
         }
 
         .hero h1 {
             font-size: clamp(44px, 8vw, 80px);
-            font-weight: 800;
-            background: linear-gradient(to right, #ffffff, #a5b4fc);
+            font-weight: 900;
+            line-height: 1.05;
+            background: linear-gradient(to right, #ffffff, #a5b4fc, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: fadeSlideUp 1s ease-out;
+            max-width: 800px;
         }
 
-        .hero p {
-            color: rgba(255, 255, 255, 0.6);
+        .hero .subtitle {
+            color: rgba(255, 255, 255, 0.5);
             font-size: 20px;
-            margin-top: 8px;
+            margin-top: 10px;
             animation: fadeSlideUp 1.2s ease-out;
+            max-width: 500px;
+        }
+
+        .hero .hero-cta {
+            margin-top: 28px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeSlideUp 1.4s ease-out;
+        }
+
+        .hero .hero-cta .btn {
+            padding: 14px 36px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: inherit;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero .hero-cta .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.25);
+        }
+        .hero .hero-cta .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.35);
+        }
+        .hero .hero-cta .btn-outline {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero .hero-cta .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
         }
 
         .stats {
             display: flex;
             justify-content: center;
             gap: 60px;
-            margin: 30px 0 0;
+            margin: 36px 0 0;
             flex-wrap: wrap;
-            animation: fadeSlideUp 1.4s ease-out;
+            animation: fadeSlideUp 1.6s ease-out;
         }
-
         .stats div {
             text-align: center;
         }
         .stats .num {
             font-size: 40px;
             font-weight: 800;
-            color: #818cf8;
+            color: var(--primary);
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
         }
         .stats .lbl {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* ===== Навигация ===== */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 100px;
-            padding: 10px 28px;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 20px;
-            animation: fadeSlideUp 0.6s ease-out;
+        /* ===== Section ===== */
+        .section {
+            margin: 50px 0 40px;
         }
 
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
+        .section-title {
+            font-size: 34px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4px;
+            animation: fadeSlideUp 0.8s ease-out;
         }
-        .logo span {
-            background: linear-gradient(135deg, #818cf8, #c084fc);
+        .section-title .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            transition: 0.3s;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            width: 0%;
-            height: 2px;
-            background: #818cf8;
-            transition: 0.3s;
-        }
-        .nav-links a:hover {
-            color: #fff;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-phone {
-            color: #818cf8;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        /* ===== Секции ===== */
-        .section {
-            margin: 60px 0 40px;
-        }
-
-        .section-title {
-            font-size: 32px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 6px;
-            animation: fadeSlideUp 0.8s ease-out;
-        }
-
         .section-sub {
             text-align: center;
-            color: rgba(255, 255, 255, 0.3);
-            margin-bottom: 30px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
             font-size: 15px;
+            animation: fadeSlideUp 0.9s ease-out;
         }
 
-        /* ===== Карточки ===== */
+        /* ===== Cards ===== */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -222,36 +429,73 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 28px 16px;
-            border-radius: 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 30px 18px;
+            border-radius: var(--radius);
             text-align: center;
-            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: var(--transition);
             backdrop-filter: blur(4px);
             opacity: 0;
             transform: translateY(30px);
             animation: cardReveal 0.6s ease-out forwards;
         }
-
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        .card:nth-child(5) { animation-delay: 0.5s; }
-        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+        .card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        .card:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+        .card:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+        .card:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+        .card:nth-child(6) {
+            animation-delay: 0.3s;
+        }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.07);
             transform: translateY(-10px) scale(1.02);
-            border-color: rgba(129, 140, 248, 0.3);
+            border-color: rgba(129, 140, 248, 0.25);
             box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
         }
 
         .card .icon {
-            font-size: 40px;
+            font-size: 44px;
             margin-bottom: 12px;
             display: block;
+            animation: floatIcon 4s ease-in-out infinite;
+        }
+        .card:nth-child(2) .icon {
+            animation-delay: 0.5s;
+        }
+        .card:nth-child(3) .icon {
+            animation-delay: 1s;
+        }
+        .card:nth-child(4) .icon {
+            animation-delay: 1.5s;
+        }
+        .card:nth-child(5) .icon {
+            animation-delay: 2s;
+        }
+        .card:nth-child(6) .icon {
+            animation-delay: 2.5s;
+        }
+
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-8px) scale(1.05);
+            }
         }
 
         .card h4 {
@@ -259,170 +503,255 @@
             margin-bottom: 6px;
             font-size: 17px;
         }
-
         .card p {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
+            color: var(--text-muted);
             line-height: 1.5;
         }
 
-        /* ===== Этапы ===== */
+        /* ===== Steps ===== */
         .steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
         }
-
         .step {
             text-align: center;
-            padding: 24px 12px;
-            background: rgba(255, 255, 255, 0.01);
+            padding: 26px 14px;
+            background: var(--surface);
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: 0.3s;
+            border: 1px solid var(--border);
+            transition: var(--transition);
             opacity: 0;
             transform: scale(0.95);
             animation: fadeSlideUp 0.5s ease-out forwards;
+            position: relative;
+            overflow: hidden;
         }
-        .step:nth-child(1) { animation-delay: 0.1s; }
-        .step:nth-child(2) { animation-delay: 0.2s; }
-        .step:nth-child(3) { animation-delay: 0.3s; }
-        .step:nth-child(4) { animation-delay: 0.4s; }
-        .step:nth-child(5) { animation-delay: 0.5s; }
+        .step::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.03), transparent);
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .step:hover::before {
+            opacity: 1;
+        }
+        .step:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+        .step:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        .step:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+        .step:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+        .step:nth-child(5) {
+            animation-delay: 0.25s;
+        }
 
         .step:hover {
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-6px);
             border-color: rgba(129, 140, 248, 0.2);
         }
-
         .step .n {
             font-size: 44px;
             font-weight: 800;
-            color: rgba(129, 140, 248, 0.15);
+            color: rgba(129, 140, 248, 0.12);
             line-height: 1;
+            position: relative;
+            z-index: 1;
         }
-
         .step h4 {
             margin: 10px 0 4px;
             font-size: 16px;
+            position: relative;
+            z-index: 1;
         }
-
         .step p {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.3);
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+        }
+        .step .step-line {
+            width: 40px;
+            height: 2px;
+            background: rgba(129, 140, 248, 0.15);
+            margin: 8px auto;
+            border-radius: 4px;
         }
 
-        /* ===== Отзывы с фото ===== */
+        /* ===== Testimonials ===== */
         .testimonials {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 24px;
         }
-
         .testimonial {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--surface);
+            border: 1px solid var(--border);
             padding: 24px;
-            border-radius: 28px;
-            transition: 0.3s;
+            border-radius: var(--radius);
+            transition: var(--transition);
             opacity: 0;
             transform: translateY(20px);
             animation: fadeSlideUp 0.6s ease-out forwards;
             display: flex;
             flex-direction: column;
         }
-
-        .testimonial:nth-child(1) { animation-delay: 0.1s; }
-        .testimonial:nth-child(2) { animation-delay: 0.2s; }
-        .testimonial:nth-child(3) { animation-delay: 0.3s; }
-        .testimonial:nth-child(4) { animation-delay: 0.4s; }
+        .testimonial:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+        .testimonial:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        .testimonial:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+        .testimonial:nth-child(4) {
+            animation-delay: 0.2s;
+        }
 
         .testimonial:hover {
             background: rgba(255, 255, 255, 0.05);
             transform: translateY(-6px);
             border-color: rgba(129, 140, 248, 0.15);
         }
-
         .testimonial .top {
             display: flex;
             align-items: center;
             gap: 14px;
             margin-bottom: 10px;
         }
-
         .testimonial .avatar {
             width: 48px;
             height: 48px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(129, 140, 248, 0.3);
+            border: 2px solid rgba(129, 140, 248, 0.2);
+            transition: 0.4s;
         }
-
+        .testimonial:hover .avatar {
+            border-color: var(--primary);
+        }
         .testimonial .info .name {
             font-weight: 700;
             font-size: 15px;
         }
-
         .testimonial .info .car {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.3);
+            color: var(--text-muted);
         }
-
         .testimonial .stars {
             color: #facc15;
             font-size: 16px;
             margin: 4px 0 6px;
+            letter-spacing: 2px;
         }
-
         .testimonial p {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.6;
             flex: 1;
         }
 
-        /* ===== Карта ===== */
-        .map-wrapper {
-            border-radius: 28px;
-            overflow: hidden;
-            height: 200px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin: 20px 0;
-            transition: 0.4s;
+        /* ===== Contact ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .contact-info .item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--surface);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .contact-info .item:hover {
+            border-color: rgba(129, 140, 248, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .contact-info .item .ci-icon {
+            font-size: 24px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(129, 140, 248, 0.08);
+            border-radius: 12px;
+        }
+        .contact-info .item .ci-text {
+            font-size: 14px;
+        }
+        .contact-info .item .ci-text strong {
+            display: block;
+            font-weight: 600;
+            color: #fff;
+        }
+        .contact-info .item .ci-text span {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .map-wrapper {
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 220px;
+            border: 1px solid var(--border);
+            transition: 0.4s;
+        }
         .map-wrapper:hover {
             border-color: rgba(129, 140, 248, 0.2);
         }
-
         .map-wrapper iframe {
             width: 100%;
             height: 100%;
             border: 0;
-            filter: grayscale(0.5) invert(0.9);
+            filter: grayscale(0.4) invert(0.9);
         }
 
-        .contacts-row {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-            color: rgba(255, 255, 255, 0.25);
-            font-size: 14px;
-            padding: 10px 0;
-        }
-
+        /* ===== Footer ===== */
         .footer {
             text-align: center;
-            padding: 30px 0 10px;
-            color: rgba(255, 255, 255, 0.1);
+            padding: 30px 0 14px;
+            color: rgba(255, 255, 255, 0.08);
             font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-top: 1px solid var(--border);
             margin-top: 30px;
         }
+        .footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer a:hover {
+            color: #fff;
+        }
 
-        /* ===== Анимации ===== */
+        /* ===== Animations ===== */
         @keyframes fadeSlideUp {
             0% {
                 opacity: 0;
@@ -445,7 +774,18 @@
             }
         }
 
-        /* ===== Адаптив ===== */
+        @keyframes scaleIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* ===== Responsive ===== */
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
@@ -454,164 +794,401 @@
             }
             .nav-links {
                 justify-content: center;
-                gap: 14px;
+                gap: 4px;
+            }
+            .nav-links button {
+                font-size: 12px;
+                padding: 6px 12px;
             }
             .stats {
                 gap: 30px;
             }
             .hero {
-                min-height: 380px;
-                padding: 40px 16px 30px;
+                min-height: 420px;
+                padding: 50px 16px 40px;
             }
             .hero h1 {
-                font-size: 38px;
+                font-size: 36px;
+            }
+            .hero .subtitle {
+                font-size: 17px;
             }
             .section-title {
                 font-size: 26px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .map-wrapper {
+                height: 160px;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 12px 10px;
+                padding: 12px 10px 0;
             }
             .card {
-                padding: 20px 12px;
+                padding: 22px 12px;
             }
             .testimonial .top {
                 flex-direction: column;
                 align-items: flex-start;
             }
+            .hero .hero-cta .btn {
+                padding: 12px 24px;
+                font-size: 13px;
+            }
+            .stats .num {
+                font-size: 30px;
+            }
+        }
+
+        /* ===== Page transition overlay ===== */
+        .page-transition {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            pointer-events: none;
+            background: var(--bg);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .page-transition.active {
+            opacity: 1;
+            pointer-events: all;
         }
     </style>
 </head>
 <body>
 
-    <!-- Фоновые свечения -->
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <!-- Glow Orbs -->
     <div class="glow1"></div>
     <div class="glow2"></div>
+    <div class="glow3"></div>
 
     <div class="container">
 
-        <!-- Навигация -->
+        <!-- ===== Navigation ===== -->
         <nav class="nav">
-            <div class="logo">Адал <span>Auto</span></div>
-            <div class="nav-links">
-                <a href="#">Қызметтер</a>
-                <a href="#">Неліктен біз</a>
-                <a href="#">Жұмыс процесі</a>
-                <a href="#">Пікірлер</a>
-                <a href="#">Байланыс</a>
+            <div class="logo">
+                Адал <span>Auto</span>
+                <span class="badge">PRO</span>
             </div>
-            <div class="nav-phone">+7 700 123 45 67</div>
+            <div class="nav-links" id="navLinks">
+                <button class="active" data-page="home">Басты</button>
+                <button data-page="services">Қызметтер</button>
+                <button data-page="process">Процесс</button>
+                <button data-page="testimonials">Пікірлер</button>
+                <button data-page="contact">Байланыс</button>
+            </div>
+            <div class="nav-phone">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                +7 700 123 45 67
+            </div>
         </nav>
 
-        <!-- Hero с фоновым видео -->
-        <div class="hero-wrapper">
-            <video class="hero-video" autoplay loop muted playsinline>
-                <source src="https://cdn.coverr.co/videos/coverr-mechanic-working-on-a-car-engine-3274/1080p.mp4" type="video/mp4" />
-                <!-- Запасной фон, если видео не загрузится -->
-            </video>
-            <div class="hero">
-                <h1>Адал Auto</h1>
-                <p>Сенімді серіктес — сапалы қызмет</p>
-                <div class="stats">
-                    <div>
-                        <div class="num" data-count="3000">0</div>
-                        <div class="lbl">Жөнделген көлік</div>
+        <!-- ===== PAGE: HOME ===== -->
+        <div class="page active" id="page-home">
+            <div class="hero-wrapper">
+                <video class="hero-video" autoplay loop muted playsinline>
+                    <source src="https://cdn.coverr.co/videos/coverr-mechanic-working-on-a-car-engine-3274/1080p.mp4" type="video/mp4" />
+                </video>
+                <div class="hero-overlay"></div>
+                <canvas id="hero-particles"></canvas>
+                <div class="hero">
+                    <div class="hero-badge">✦ 10+ жыл сенімді сервис</div>
+                    <h1>Адал Auto</h1>
+                    <p class="subtitle">Сенімді серіктес — сапалы қызмет</p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary" onclick="navigateTo('contact')">✆ Байланыс</button>
+                        <button class="btn btn-outline" onclick="navigateTo('services')">Қызметтер</button>
                     </div>
-                    <div>
-                        <div class="num" data-count="98">0</div>
-                        <div class="lbl">% Қанағаттанған клиент</div>
+                    <div class="stats">
+                        <div>
+                            <div class="num" data-count="3000">0<span>+</span></div>
+                            <div class="lbl">Жөнделген көлік</div>
+                        </div>
+                        <div>
+                            <div class="num" data-count="98">0<span>%</span></div>
+                            <div class="lbl">Қанағаттанған клиент</div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Quick preview -->
+            <section class="section">
+                <h2 class="section-title">Неге <span class="highlight">біз</span>?</h2>
+                <p class="section-sub">Бізді таңдаудың 6 себебі</p>
+                <div class="grid-3">
+                    <div class="card"><span class="icon">🏆</span><h4>10+ жыл тәжірибе</h4><p>Жылдар бойы жинақталған білім мен шеберлік</p></div>
+                    <div class="card"><span class="icon">📜</span><h4>Кепілдік</h4><p>Барлық жұмыстарға ресми кепілдік</p></div>
+                    <div class="card"><span class="icon">🔧</span><h4>Түпнұсқа бөлшектер</h4><p>Тек сапалы қосалқы бөлшектер</p></div>
+                    <div class="card"><span class="icon">⚙️</span><h4>Заманауи құралдар</h4><p>Ең жаңа диагностика жабдықтары</p></div>
+                    <div class="card"><span class="icon">⚡</span><h4>Жылдам қызмет</h4><p>Уақытты бағалаймыз, тез орындаймыз</p></div>
+                    <div class="card"><span class="icon">💰</span><h4>Ашық баға</h4><p>Жасырын төлемдер жоқ, баға алдын ала келісіледі</p></div>
+                </div>
+            </section>
         </div>
 
-        <!-- Неліктен біз -->
-        <section class="section">
-            <h2 class="section-title">Неліктен біз</h2>
-            <p class="section-sub">Бізді таңдаудың 6 себебі</p>
-            <div class="grid-3">
-                <div class="card"><span class="icon">🏆</span><h4>10+ жыл тәжірибе</h4><p>Ондаған жыл бойы жинақталған білім</p></div>
-                <div class="card"><span class="icon">📜</span><h4>Кепілдік беріледі</h4><p>Барлық жұмыстарға кепілдік</p></div>
-                <div class="card"><span class="icon">🔧</span><h4>Түпнұсқа бөлшектер</h4><p>Тек сапалы қосалқы бөлшектер</p></div>
-                <div class="card"><span class="icon">⚙️</span><h4>Заманауи құралдар</h4><p>Ең жаңа диагностика жабдықтары</p></div>
-                <div class="card"><span class="icon">⚡</span><h4>Жылдам қызмет</h4><p>Уақытты бағалаймыз, тез орындаймыз</p></div>
-                <div class="card"><span class="icon">💰</span><h4>Ашық баға саясаты</h4><p>Жасырын төлемдер жоқ</p></div>
-            </div>
-        </section>
-
-        <!-- Жұмыс процесі -->
-        <section class="section">
-            <h2 class="section-title">Жұмыс процесі</h2>
-            <p class="section-sub">Қызмет көрсету кезеңдері</p>
-            <div class="steps">
-                <div class="step"><div class="n">01</div><h4>Өтінім қалдыру</h4><p>Сайт/телефон арқылы</p></div>
-                <div class="step"><div class="n">02</div><h4>Диагностика</h4><p>Көлікті толық тексеру</p></div>
-                <div class="step"><div class="n">03</div><h4>Баға келісу</h4><p>Жұмыс көлемі мен баға</p></div>
-                <div class="step"><div class="n">04</div><h4>Жөндеу</h4><p>Кәсіби жөндеу</p></div>
-                <div class="step"><div class="n">05</div><h4>Көлікті тапсыру</h4><p>Кепілдікпен тапсыру</p></div>
-            </div>
-        </section>
-
-        <!-- Клиент пікірлері -->
-        <section class="section">
-            <h2 class="section-title">Клиент пікірлері</h2>
-            <p class="section-sub">Клиенттеріміз не дейді</p>
-            <div class="testimonials">
-                <div class="testimonial">
-                    <div class="top">
-                        <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Аватар" />
-                        <div class="info"><div class="name">Арман Тілеуов</div><div class="car">Toyota Camry 70</div></div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p>Өте жақсы сервис! Қозғалтқышты тез және сапалы жөндеп берді. Ұсынамын!</p>
+        <!-- ===== PAGE: SERVICES ===== -->
+        <div class="page" id="page-services">
+            <section class="section">
+                <h2 class="section-title">Біздің <span class="highlight">қызметтер</span></h2>
+                <p class="section-sub">Кәсіби шешімдер, бір шаңырақ астында</p>
+                <div class="grid-3">
+                    <div class="card"><span class="icon">🔩</span><h4>Қозғалтқыш жөндеу</h4><p>Барлық типтегі қозғалтқыштарды диагностикалау және жөндеу</p></div>
+                    <div class="card"><span class="icon">🛞</span><h4>Ходовая бөлігі</h4><p>Амортизаторлар, рычагтар, дөңгелектерді теңгеру</p></div>
+                    <div class="card"><span class="icon">🧰</span><h4>Электроника</h4><p>Борттық компьютерлер, сенсорлар, электр тізбектері</p></div>
+                    <div class="card"><span class="icon">🛢️</span><h4>Май ауыстыру</h4><p>Қозғалтқыш, трансмиссия майларын сапалы ауыстыру</p></div>
+                    <div class="card"><span class="icon">❄️</span><h4>Кондиционер</h4><p>Диагностика, фреон толтыру, жүйені тазалау</p></div>
+                    <div class="card"><span class="icon">📋</span><h4>Кешенді диагностика</h4><p>Көліктің барлық жүйесін тексеру, ақауларды анықтау</p></div>
                 </div>
-                <div class="testimonial">
-                    <div class="top">
-                        <img class="avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Аватар" />
-                        <div class="info"><div class="name">Дәурен Сейтқазин</div><div class="car">BMW X5</div></div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p>Ходоваяны толық жөндетіп шықтым. Баға қолжетімді, жұмыс сапалы.</p>
-                </div>
-                <div class="testimonial">
-                    <div class="top">
-                        <img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Аватар" />
-                        <div class="info"><div class="name">Айгүл Қасымова</div><div class="car">Hyundai Tucson</div></div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p>Мамандар өз ісін жақсы біледі. Енді тек осында жүргіземін.</p>
-                </div>
-                <div class="testimonial">
-                    <div class="top">
-                        <img class="avatar" src="https://randomuser.me/api/portraits/men/52.jpg" alt="Аватар" />
-                        <div class="info"><div class="name">Болат Жұмабаев</div><div class="car">Mercedes E-Class</div></div>
-                    </div>
-                    <div class="stars">★★★★★</div>
-                    <p>Өте сапалы қызмет. Уақытында тапсырды. Рахмет!</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Карта + контакты -->
-        <div class="map-wrapper">
-            <iframe src="https://yandex.kz/map-widget/v1/?ll=71.430073%2C51.128220&z=16&pt=71.430073,51.128220,pm2rdl"></iframe>
-        </div>
-        <div class="contacts-row">
-            <span>📍 Астана, Достық 12/1</span>
-            <span>📞 +7 700 123 45 67</span>
-            <span>⏰ 09:00 – 21:00</span>
+            </section>
         </div>
 
+        <!-- ===== PAGE: PROCESS ===== -->
+        <div class="page" id="page-process">
+            <section class="section">
+                <h2 class="section-title">Жұмыс <span class="highlight">процесі</span></h2>
+                <p class="section-sub">Қызмет көрсету кезеңдері</p>
+                <div class="steps">
+                    <div class="step"><div class="n">01</div><h4>Өтінім</h4><p>Сайт немесе телефон арқылы</p><div class="step-line"></div></div>
+                    <div class="step"><div class="n">02</div><h4>Диагностика</h4><p>Көлікті толық тексеру</p><div class="step-line"></div></div>
+                    <div class="step"><div class="n">03</div><h4>Баға келісу</h4><p>Жұмыс көлемі мен бағасы</p><div class="step-line"></div></div>
+                    <div class="step"><div class="n">04</div><h4>Жөндеу</h4><p>Кәсіби мамандар қолымен</p><div class="step-line"></div></div>
+                    <div class="step"><div class="n">05</div><h4>Тапсыру</h4><p>Кепілдікпен қайтарып беру</p><div class="step-line"></div></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== PAGE: TESTIMONIALS ===== -->
+        <div class="page" id="page-testimonials">
+            <section class="section">
+                <h2 class="section-title">Клиент <span class="highlight">пікірлері</span></h2>
+                <p class="section-sub">Бізге сенген жүздеген клиенттер</p>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="top">
+                            <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Аватар" />
+                            <div class="info"><div class="name">Арман Тілеуов</div><div class="car">Toyota Camry 70</div></div>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                        <p>Өте жақсы сервис! Қозғалтқышты тез әрі сапалы жөндеп берді. Ұсынамын!</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="top">
+                            <img class="avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Аватар" />
+                            <div class="info"><div class="name">Дәурен Сейтқазин</div><div class="car">BMW X5</div></div>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                        <p>Ходоваяны толық жөндетіп шықтым. Бағасы қолжетімді, сапасы тамаша.</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="top">
+                            <img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Аватар" />
+                            <div class="info"><div class="name">Айгүл Қасымова</div><div class="car">Hyundai Tucson</div></div>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                        <p>Мамандар өз ісін жақсы біледі. Енді тек осында жүргіземін. Рахмет!</p>
+                    </div>
+                    <div class="testimonial">
+                        <div class="top">
+                            <img class="avatar" src="https://randomuser.me/api/portraits/men/52.jpg" alt="Аватар" />
+                            <div class="info"><div class="name">Болат Жұмабаев</div><div class="car">Mercedes E-Class</div></div>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                        <p>Уақытында тапсырды, сапасы керемет. Бұл жерде алданып қалмайсыз!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== PAGE: CONTACT ===== -->
+        <div class="page" id="page-contact">
+            <section class="section">
+                <h2 class="section-title">Бізбен <span class="highlight">байланыс</span></h2>
+                <p class="section-sub">Кез келген сұрақ бойынша хабарласыңыз</p>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="item">
+                            <div class="ci-icon">📍</div>
+                            <div class="ci-text"><strong>Мекенжай</strong><span>Астана, Достық 12/1</span></div>
+                        </div>
+                        <div class="item">
+                            <div class="ci-icon">📞</div>
+                            <div class="ci-text"><strong>Телефон</strong><span>+7 700 123 45 67</span></div>
+                        </div>
+                        <div class="item">
+                            <div class="ci-icon">⏰</div>
+                            <div class="ci-text"><strong>Жұмыс уақыты</strong><span>Дүйсенбі – Жексенбі · 09:00 – 21:00</span></div>
+                        </div>
+                        <div class="item">
+                            <div class="ci-icon">✉️</div>
+                            <div class="ci-text"><strong>Email</strong><span>info@adalauto.kz</span></div>
+                        </div>
+                    </div>
+                    <div class="map-wrapper">
+                        <iframe src="https://yandex.kz/map-widget/v1/?ll=71.430073%2C51.128220&z=16&pt=71.430073,51.128220,pm2rdl"></iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== Footer ===== -->
         <footer class="footer">
-            © 2026 Адал Auto · Барлық құқықтар қорғалған
+            © 2026 <a href="#">Адал Auto</a> · Барлық құқықтар қорғалған
         </footer>
+
     </div>
 
     <script>
-        // ===== Анимированные счётчики (Intersection Observer) =====
+        // ============================================================
+        //  1. PAGE NAVIGATION
+        // ============================================================
+        const navBtns = document.querySelectorAll('.nav-links button');
+        const pages = {
+            home: document.getElementById('page-home'),
+            services: document.getElementById('page-services'),
+            process: document.getElementById('page-process'),
+            testimonials: document.getElementById('page-testimonials'),
+            contact: document.getElementById('page-contact'),
+        };
+        const transition = document.getElementById('pageTransition');
+        let isTransitioning = false;
+
+        function navigateTo(pageId) {
+            if (isTransitioning) return;
+            const target = pages[pageId];
+            if (!target || target.classList.contains('active')) return;
+
+            isTransitioning = true;
+
+            // Update nav buttons
+            navBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.page === pageId);
+            });
+
+            // Transition overlay
+            transition.classList.add('active');
+
+            setTimeout(() => {
+                // Hide all pages
+                Object.values(pages).forEach(p => p.classList.remove('active'));
+                // Show target
+                target.classList.add('active');
+                // Re-trigger animations in the new page
+                const animEls = target.querySelectorAll('.card, .step, .testimonial');
+                animEls.forEach((el, i) => {
+                    el.style.animation = 'none';
+                    el.offsetHeight; // reflow
+                    el.style.animation = '';
+                    el.style.animationDelay = (i * 0.05) + 's';
+                });
+
+                transition.classList.remove('active');
+                isTransitioning = false;
+            }, 350);
+        }
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                navigateTo(btn.dataset.page);
+            });
+        });
+
+        // Expose for inline onclick
+        window.navigateTo = navigateTo;
+
+        // ============================================================
+        //  2. HERO PARTICLES (Canvas)
+        // ============================================================
+        const canvas = document.getElementById('hero-particles');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let w, h;
+            const particles = [];
+            const COUNT = 80;
+
+            function resize() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                canvas.width = rect.width;
+                canvas.height = rect.height;
+                w = canvas.width;
+                h = canvas.height;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.size = Math.random() * 2.5 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > w) this.speedX *= -1;
+                    if (this.y < 0 || this.y > h) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(129, 140, 248, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < COUNT; i++) {
+                particles.push(new Particle());
+            }
+
+            function drawLines() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 150) {
+                            const alpha = (1 - dist / 150) * 0.15;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(129, 140, 248, ${alpha})`;
+                            ctx.lineWidth = 0.6;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, w, h);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                drawLines();
+                requestAnimationFrame(animateParticles);
+            }
+
+            animateParticles();
+        }
+
+        // ============================================================
+        //  3. ANIMATED COUNTERS (Intersection Observer)
+        // ============================================================
         const counters = document.querySelectorAll('.num');
 
         const observer = new IntersectionObserver((entries) => {
@@ -619,23 +1196,63 @@
                 if (entry.isIntersecting) {
                     const el = entry.target;
                     const target = parseInt(el.getAttribute('data-count'), 10);
+                    const suffix = el.querySelector('span')?.textContent || '';
                     let current = 0;
-                    const increment = target / 60; // 60 кадров ~ 1 секунда
+                    const increment = target / 50;
                     const timer = setInterval(() => {
                         current += increment;
                         if (current >= target) {
-                            el.textContent = target + (target === 98 ? '%' : '+');
+                            el.innerHTML = target + suffix;
                             clearInterval(timer);
                         } else {
-                            el.textContent = Math.floor(current) + (target === 98 ? '%' : '+');
+                            el.innerHTML = Math.floor(current) + suffix;
                         }
-                    }, 20);
+                    }, 25);
                     observer.unobserve(el);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.4 });
 
         counters.forEach(c => observer.observe(c));
+
+        // ============================================================
+        //  4. SMOOTH SCROLL FOR ANCHOR LINKS (optional)
+        // ============================================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ============================================================
+        //  5. KEYBOARD NAVIGATION
+        // ============================================================
+        document.addEventListener('keydown', (e) => {
+            const pagesOrder = ['home', 'services', 'process', 'testimonials', 'contact'];
+            const current = document.querySelector('.page.active');
+            if (!current) return;
+            const currentId = current.id.replace('page-', '');
+            const idx = pagesOrder.indexOf(currentId);
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                const next = pagesOrder[(idx + 1) % pagesOrder.length];
+                navigateTo(next);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = pagesOrder[(idx - 1 + pagesOrder.length) % pagesOrder.length];
+                navigateTo(prev);
+            }
+        });
+
+        console.log('🚗 Адал Auto — Сенімді серіктес');
+        console.log('📄 Беттер: Басты | Қызметтер | Процесс | Пікірлер | Байланыс');
+        console.log('⌨️ ← → батырмаларымен беттер арасында жүруге болады');
     </script>
 
 </body>
